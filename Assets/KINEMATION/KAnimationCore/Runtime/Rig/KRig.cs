@@ -3,7 +3,6 @@
 using KINEMATION.KAnimationCore.Runtime.Input;
 
 using System.Collections.Generic;
-using KINEMATION.KAnimationCore.Runtime.Attributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,8 +15,6 @@ namespace KINEMATION.KAnimationCore.Runtime.Rig
         public RuntimeAnimatorController targetAnimator;
         public UserInputConfig inputConfig;
         public List<KRigElement> rigHierarchy = new List<KRigElement>();
-
-        [CustomElementChainDrawer(false, true)]
         public List<KRigElementChain> rigElementChains = new List<KRigElementChain>();
         public List<string> rigCurves = new List<string>();
 

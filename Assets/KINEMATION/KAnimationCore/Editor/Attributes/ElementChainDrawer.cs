@@ -5,7 +5,7 @@ using KINEMATION.KAnimationCore.Runtime.Rig;
 
 using System.Collections.Generic;
 using System.Linq;
-using KINEMATION.KAnimationCore.Runtime.Attributes;
+
 using UnityEditor;
 using UnityEngine;
 
@@ -14,20 +14,6 @@ namespace KINEMATION.KAnimationCore.Editor.Attributes
     [CustomPropertyDrawer(typeof(KRigElementChain))]
     public class ElementChainDrawer : PropertyDrawer
     {
-        private CustomElementChainDrawerAttribute GetCustomChainAttribute()
-        {
-            CustomElementChainDrawerAttribute attr = null;
-
-            var attributes = fieldInfo.GetCustomAttributes(true);
-            foreach (var customAttribute in attributes)
-            {
-                attr = customAttribute as CustomElementChainDrawerAttribute;
-                if (attr != null) break;
-            }
-            
-            return attr;
-        }
-        
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
@@ -36,42 +22,33 @@ namespace KINEMATION.KAnimationCore.Editor.Attributes
             
             SerializedProperty elementChain = property.FindPropertyRelative("elementChain");
             SerializedProperty chainName = property.FindPropertyRelative("chainName");
+            SerializedProperty isStandalone = property.FindPropertyRelative("isStandalone");
             
             if (rig != null)
             {
                 var rigHierarchy = rig.rigHierarchy;
                 
                 float labelWidth = EditorGUIUtility.labelWidth;
-                var customChain = GetCustomChainAttribute();
+                float indentLevel = EditorGUI.indentLevel;
                 
-                Rect labelRect = new Rect(position.x, position.y, labelWidth, EditorGUIUtility.singleLineHeight);
-                Rect buttonRect = position;
+                float totalWidth = position.width - indentLevel - labelWidth;
                 
-                string buttonText = $"Edit {chainName.stringValue}";
-
-                if (customChain is {drawLabel: true})
+                Rect propertyFieldRect = new Rect(position.x + indentLevel, position.y,
+                    labelWidth, EditorGUIUtility.singleLineHeight);
+                
+                Rect buttonRect = new Rect(position.x + indentLevel + labelWidth, position.y,
+                    totalWidth, EditorGUIUtility.singleLineHeight);
+                
+                if (isStandalone.boolValue)
                 {
-                    EditorGUI.PrefixLabel(labelRect, label);
-                    labelRect.x += labelRect.width;
-                    labelRect.width = (position.width - labelWidth) / 2f;
-
-                    buttonRect.x = labelRect.x;
-                    buttonRect.width = position.width - labelWidth;
-                    
-                    buttonText = $"Edit {label.text}";
+                    buttonRect = position;
                 }
-
-                if (customChain is {drawTextField: true})
+                else
                 {
-                    chainName.stringValue = EditorGUI.TextField(labelRect, chainName.stringValue);
-
-                    buttonRect.x = labelRect.x + labelRect.width;
-                    buttonRect.width = position.width - (buttonRect.x - position.x);
-                    
-                    buttonText = "Edit";
+                    chainName.stringValue = EditorGUI.TextField(propertyFieldRect, chainName.stringValue);
                 }
                 
-                if (GUI.Button(buttonRect, buttonText))
+                if (GUI.Button(buttonRect, $"Edit {chainName.stringValue}"))
                 {
                     List<int> selectedIds = new List<int>();
                     
