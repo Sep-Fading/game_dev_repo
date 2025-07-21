@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d76ba7357ab72d445b9e1ff901bcd8c7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 240061
+  packageName: Retarget Pro
+  packageVersion: 4.1.0
+  assetPath: Assets/KINEMATION/RetargetPro/Presets/Rig_UnityRobot.asset
+  uploadId: 766608

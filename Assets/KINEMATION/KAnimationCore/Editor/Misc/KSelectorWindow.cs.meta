@@ -3,8 +3,8 @@ guid: ebe01bfda1354888806c73d35b2e8af0
 timeCreated: 1704267364
 AssetOrigin:
   serializedVersion: 1
-  productId: 239796
-  packageName: FPS Animation Lite
-  packageVersion: 3.0.0
+  productId: 240061
+  packageName: Retarget Pro
+  packageVersion: 4.1.0
   assetPath: Assets/KINEMATION/KAnimationCore/Editor/Misc/KSelectorWindow.cs
-  uploadId: 763631
+  uploadId: 766608

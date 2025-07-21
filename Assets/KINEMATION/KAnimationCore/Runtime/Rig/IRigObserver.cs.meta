@@ -3,8 +3,8 @@ guid: 00acdb04eae148a0b993a37cb2b95007
 timeCreated: 1708431186
 AssetOrigin:
   serializedVersion: 1
-  productId: 239796
-  packageName: FPS Animation Lite
-  packageVersion: 3.0.0
+  productId: 240061
+  packageName: Retarget Pro
+  packageVersion: 4.1.0
   assetPath: Assets/KINEMATION/KAnimationCore/Runtime/Rig/IRigObserver.cs
-  uploadId: 763631
+  uploadId: 766608

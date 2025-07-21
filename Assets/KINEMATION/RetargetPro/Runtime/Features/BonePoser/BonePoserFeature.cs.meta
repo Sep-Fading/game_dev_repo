@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 6c390c3bbd6e4cf4a9410673165f8188
+timeCreated: 1740466195
+AssetOrigin:
+  serializedVersion: 1
+  productId: 240061
+  packageName: Retarget Pro
+  packageVersion: 4.1.0
+  assetPath: Assets/KINEMATION/RetargetPro/Runtime/Features/BonePoser/BonePoserFeature.cs
+  uploadId: 766608

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d5b4feb86312cb441ae6d2dfa6a21f33
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 240061
+  packageName: Retarget Pro
+  packageVersion: 4.1.0
+  assetPath: Assets/KINEMATION/RetargetPro/Presets/Retarget_Rig_Synty_Rig_Mixamo.asset
+  uploadId: 766608
