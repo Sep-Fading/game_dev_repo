@@ -226,7 +226,8 @@ namespace Demo.Scripts.Runtime.Item
             if (_weaponAnimator != null)
             {
                 _weaponAnimator.Rebind();
-                _weaponAnimator.Play("Reload", 0);
+                _weaponAnimator.Play("Reload_Tac", 0);
+                _playablesController.PlayAnimation(reloadClip);
             }
 
             if (_fpsCameraController != null)

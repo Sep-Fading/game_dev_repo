@@ -1,0 +1,894 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7198001866851000021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_MiddleProximal
+    elementChain:
+    - name: Left_MiddleProximal
+      index: 23
+      isVirtual: 0
+    - name: Left_MiddleIntermediate
+      index: 24
+      isVirtual: 0
+    - name: Left_MiddleDistal
+      index: 25
+      isVirtual: 0
+    - name: Left_MiddleDistalEnd
+      index: 26
+      isVirtual: 0
+  targetChain:
+    chainName: Left_Midde
+    elementChain:
+    - name: Left Hand Middle 1
+      index: 23
+      isVirtual: 0
+    - name: Left Hand Middle 2
+      index: 24
+      isVirtual: 0
+    - name: Left Hand Middle 3
+      index: 25
+      isVirtual: 0
+    - name: Left Hand Middle 3_end
+      index: 26
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-6597795795821455731
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_UpperLeg
+    elementChain:
+    - name: Left_UpperLeg
+      index: 2
+      isVirtual: 0
+    - name: Left_LowerLeg
+      index: 3
+      isVirtual: 0
+    - name: Left_Foot
+      index: 4
+      isVirtual: 0
+  targetChain:
+    chainName: leftLeg
+    elementChain:
+    - name: Left Thigh
+      index: 2
+      isVirtual: 0
+    - name: Left Leg
+      index: 3
+      isVirtual: 0
+    - name: Left Foot
+      index: 4
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-6411871660615918793
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_UpperLeg
+    elementChain:
+    - name: Right_UpperLeg
+      index: 7
+      isVirtual: 0
+    - name: Right_LowerLeg
+      index: 8
+      isVirtual: 0
+    - name: Right_Foot
+      index: 9
+      isVirtual: 0
+  targetChain:
+    chainName: rightLeg
+    elementChain:
+    - name: Right Thigh
+      index: 7
+      isVirtual: 0
+    - name: Right Leg
+      index: 8
+      isVirtual: 0
+    - name: Right Foot
+      index: 9
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-4805574713654197205
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_Shoulder
+    elementChain:
+    - name: Left_Shoulder
+      index: 15
+      isVirtual: 0
+    - name: Left_UpperArm
+      index: 16
+      isVirtual: 0
+    - name: Left_LowerArm
+      index: 17
+      isVirtual: 0
+    - name: Left_Hand
+      index: 18
+      isVirtual: 0
+  targetChain:
+    chainName: leftArm
+    elementChain:
+    - name: Left Shoulder
+      index: 15
+      isVirtual: 0
+    - name: Left Arm
+      index: 16
+      isVirtual: 0
+    - name: Left Forearm
+      index: 17
+      isVirtual: 0
+    - name: Left Hand
+      index: 18
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-3922787918256821838
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_Shoulder
+    elementChain:
+    - name: Right_Shoulder
+      index: 45
+      isVirtual: 0
+    - name: Right_UpperArm
+      index: 46
+      isVirtual: 0
+    - name: Right_LowerArm
+      index: 47
+      isVirtual: 0
+    - name: Right_Hand
+      index: 48
+      isVirtual: 0
+  targetChain:
+    chainName: rightArm
+    elementChain:
+    - name: Right Shoulder
+      index: 42
+      isVirtual: 0
+    - name: Right Arm
+      index: 43
+      isVirtual: 0
+    - name: Right Forearm
+      index: 44
+      isVirtual: 0
+    - name: Right Hand
+      index: 45
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-3622497241349602126
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_RingProximal
+    elementChain:
+    - name: Left_RingProximal
+      index: 31
+      isVirtual: 0
+    - name: Left_RingIntermediate
+      index: 32
+      isVirtual: 0
+    - name: Left_RingDistal
+      index: 33
+      isVirtual: 0
+    - name: Left_RingDistalEnd
+      index: 34
+      isVirtual: 0
+  targetChain:
+    chainName: Left_Ring
+    elementChain:
+    - name: Left Hand Ring 1
+      index: 31
+      isVirtual: 0
+    - name: Left Hand Ring 2
+      index: 32
+      isVirtual: 0
+    - name: Left Hand Ring 3
+      index: 33
+      isVirtual: 0
+    - name: Left Hand Ring 3_end
+      index: 34
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-2445700510890150483
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_ThumbProximal
+    elementChain:
+    - name: Left_ThumbProximal
+      index: 35
+      isVirtual: 0
+    - name: Left_ThumbIntermediate
+      index: 36
+      isVirtual: 0
+    - name: Left_ThumbDistal
+      index: 37
+      isVirtual: 0
+    - name: Left_ThumbDistalEnd
+      index: 38
+      isVirtual: 0
+  targetChain:
+    chainName: Left_Thumb
+    elementChain:
+    - name: Left Hand Thumb 1
+      index: 35
+      isVirtual: 0
+    - name: Left Hand Thumb 2
+      index: 36
+      isVirtual: 0
+    - name: Left Hand Thumb 3
+      index: 37
+      isVirtual: 0
+    - name: Left Hand Thumb 3_end
+      index: 38
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12349bae48c61824bb8e519537ce28eb, type: 3}
+  m_Name: RetargetProfile_Socket
+  m_EditorClassIdentifier: 
+  sourceCharacter: {fileID: 0}
+  targetCharacter: {fileID: 0}
+  sourcePose: {fileID: 0}
+  targetPose: {fileID: 0}
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  excludeChain:
+    chainName: Elements To Exclude
+    elementChain: []
+  retargetFeatures:
+  - {fileID: 9103639153441324365}
+  - {fileID: -6411871660615918793}
+  - {fileID: -6597795795821455731}
+  - {fileID: 842534238407398867}
+  - {fileID: 6712861854683244101}
+  - {fileID: -3922787918256821838}
+  - {fileID: -4805574713654197205}
+  - {fileID: 7940593767912763866}
+  - {fileID: -7198001866851000021}
+  - {fileID: 6101377211390826864}
+  - {fileID: -3622497241349602126}
+  - {fileID: -2445700510890150483}
+  - {fileID: 1849912498391408022}
+  - {fileID: 2697903640190084346}
+  - {fileID: 1013868742226588039}
+  - {fileID: 7380646508120617540}
+  - {fileID: 7118772021298345906}
+  - {fileID: 555531564441298531}
+--- !u!114 &555531564441298531
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Sockets
+    elementChain:
+    - name: Grenade Socket
+      index: 69
+      isVirtual: 0
+  targetChain:
+    chainName: Sockets
+    elementChain:
+    - name: Grenade Socket
+      index: 66
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 1
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &842534238407398867
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Spine
+    elementChain:
+    - name: Spine
+      index: 12
+      isVirtual: 0
+    - name: Chest
+      index: 13
+      isVirtual: 0
+    - name: UpperChest
+      index: 14
+      isVirtual: 0
+  targetChain:
+    chainName: spine
+    elementChain:
+    - name: Spine 1
+      index: 12
+      isVirtual: 0
+    - name: Spine 2
+      index: 13
+      isVirtual: 0
+    - name: Spine 3
+      index: 14
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1013868742226588039
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_PinkyProximal
+    elementChain:
+    - name: Right_PinkyProximal
+      index: 57
+      isVirtual: 0
+    - name: Right_PinkyIntermediate
+      index: 58
+      isVirtual: 0
+    - name: Right_PinkyDistal
+      index: 59
+      isVirtual: 0
+    - name: Right_PinkyDistalEnd
+      index: 60
+      isVirtual: 0
+  targetChain:
+    chainName: Right_Pinky
+    elementChain:
+    - name: Right Hand Pinky 1
+      index: 54
+      isVirtual: 0
+    - name: Right Hand Pinky 2
+      index: 55
+      isVirtual: 0
+    - name: Right Hand Pinky 3
+      index: 56
+      isVirtual: 0
+    - name: Right Hand Pinky 3_end
+      index: 57
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1849912498391408022
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_IndexProximal
+    elementChain:
+    - name: Right_IndexProximal
+      index: 49
+      isVirtual: 0
+    - name: Right_IndexIntermediate
+      index: 50
+      isVirtual: 0
+    - name: Right_IndexDistal
+      index: 51
+      isVirtual: 0
+    - name: Right_IndexDistalEnd
+      index: 52
+      isVirtual: 0
+  targetChain:
+    chainName: Right_Index
+    elementChain:
+    - name: Right Hand Index 1
+      index: 46
+      isVirtual: 0
+    - name: Right Hand Index 2
+      index: 47
+      isVirtual: 0
+    - name: Right Hand Index 3
+      index: 48
+      isVirtual: 0
+    - name: Right Hand Index 3_end
+      index: 49
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &2697903640190084346
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_MiddleProximal
+    elementChain:
+    - name: Right_MiddleProximal
+      index: 53
+      isVirtual: 0
+    - name: Right_MiddleIntermediate
+      index: 54
+      isVirtual: 0
+    - name: Right_MiddleDistal
+      index: 55
+      isVirtual: 0
+    - name: Right_MiddleDistalEnd
+      index: 56
+      isVirtual: 0
+  targetChain:
+    chainName: Right_Middle
+    elementChain:
+    - name: Right Hand Middle 1
+      index: 50
+      isVirtual: 0
+    - name: Right Hand Middle 2
+      index: 51
+      isVirtual: 0
+    - name: Right Hand Middle 3
+      index: 52
+      isVirtual: 0
+    - name: Right Hand Middle 3_end
+      index: 53
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &6101377211390826864
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_PinkyProximal
+    elementChain:
+    - name: Left_PinkyProximal
+      index: 27
+      isVirtual: 0
+    - name: Left_PinkyIntermediate
+      index: 28
+      isVirtual: 0
+    - name: Left_PinkyDistal
+      index: 29
+      isVirtual: 0
+    - name: Left_PinkyDistalEnd
+      index: 30
+      isVirtual: 0
+  targetChain:
+    chainName: Left_Pinky
+    elementChain:
+    - name: Left Hand Pinky 1
+      index: 27
+      isVirtual: 0
+    - name: Left Hand Pinky 2
+      index: 28
+      isVirtual: 0
+    - name: Left Hand Pinky 3
+      index: 29
+      isVirtual: 0
+    - name: Left Hand Pinky 3_end
+      index: 30
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &6712861854683244101
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Neck
+    elementChain:
+    - name: Neck
+      index: 39
+      isVirtual: 0
+    - name: Head
+      index: 40
+      isVirtual: 0
+  targetChain:
+    chainName: neck
+    elementChain:
+    - name: Neck
+      index: 39
+      isVirtual: 0
+    - name: Head
+      index: 40
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &7118772021298345906
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_ThumbProximal
+    elementChain:
+    - name: Right_ThumbProximal
+      index: 65
+      isVirtual: 0
+    - name: Right_ThumbIntermediate
+      index: 66
+      isVirtual: 0
+    - name: Right_ThumbDistal
+      index: 67
+      isVirtual: 0
+    - name: Right_ThumbDistalEnd
+      index: 68
+      isVirtual: 0
+  targetChain:
+    chainName: Right_Thumb
+    elementChain:
+    - name: Right Hand Thumb 1
+      index: 62
+      isVirtual: 0
+    - name: Right Hand Thumb 2
+      index: 63
+      isVirtual: 0
+    - name: Right Hand Thumb 3
+      index: 64
+      isVirtual: 0
+    - name: Right Hand Thumb 3_end
+      index: 65
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &7380646508120617540
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Right_RingProximal
+    elementChain:
+    - name: Right_RingProximal
+      index: 61
+      isVirtual: 0
+    - name: Right_RingIntermediate
+      index: 62
+      isVirtual: 0
+    - name: Right_RingDistal
+      index: 63
+      isVirtual: 0
+    - name: Right_RingDistalEnd
+      index: 64
+      isVirtual: 0
+  targetChain:
+    chainName: Right_Ring
+    elementChain:
+    - name: Right Hand Ring 1
+      index: 58
+      isVirtual: 0
+    - name: Right Hand Ring 2
+      index: 59
+      isVirtual: 0
+    - name: Right Hand Ring 3
+      index: 60
+      isVirtual: 0
+    - name: Right Hand Ring 3_end
+      index: 61
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &7940593767912763866
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Left_IndexProximal
+    elementChain:
+    - name: Left_IndexProximal
+      index: 19
+      isVirtual: 0
+    - name: Left_IndexIntermediate
+      index: 20
+      isVirtual: 0
+    - name: Left_IndexDistal
+      index: 21
+      isVirtual: 0
+    - name: Left_IndexDistalEnd
+      index: 22
+      isVirtual: 0
+  targetChain:
+    chainName: Left_Index
+    elementChain:
+    - name: Left Hand Index 1
+      index: 19
+      isVirtual: 0
+    - name: Left Hand Index 2
+      index: 20
+      isVirtual: 0
+    - name: Left Hand Index 3
+      index: 21
+      isVirtual: 0
+    - name: Left Hand Index 3_end
+      index: 22
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 0
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &9103639153441324365
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c037f4882c5493a84c1732694149815, type: 3}
+  m_Name: IKRetargetFeature
+  m_EditorClassIdentifier: 
+  sourceRig: {fileID: 11400000, guid: 070de7fc383ce1a479920d47faf4770b, type: 2}
+  targetRig: {fileID: 11400000, guid: 5330cc405230c2e4da9941960c95b573, type: 2}
+  featureWeight: 1
+  sourceChain:
+    chainName: Hips
+    elementChain:
+    - name: Hips
+      index: 1
+      isVirtual: 0
+  targetChain:
+    chainName: pelvis
+    elementChain:
+    - name: Hips
+      index: 1
+      isVirtual: 0
+  scaleWeight: 1
+  translationWeight: 1
+  offset: {x: 0, y: 0, z: 0}
+  ikWeight: 0
+  effectorOffset: {x: 0, y: 0, z: 0}
+  poleOffset: {x: 0, y: 0, z: 0}

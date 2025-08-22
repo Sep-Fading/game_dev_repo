@@ -1,0 +1,384 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9c04639ae548bdb0a8e927492d029d, type: 3}
+  m_Name: Rig_SM_Character_Male_01
+  m_EditorClassIdentifier: 
+  targetAnimator: {fileID: 0}
+  inputConfig: {fileID: 0}
+  rigHierarchy:
+  - name: SM_Character_Male_01
+    index: 0
+    isVirtual: 0
+  - name: Character_Female_Face_01
+    index: 1
+    isVirtual: 0
+  - name: Character_Male_Face_01
+    index: 2
+    isVirtual: 0
+  - name: Root
+    index: 3
+    isVirtual: 0
+  - name: Hips
+    index: 4
+    isVirtual: 0
+  - name: Spine_01
+    index: 5
+    isVirtual: 0
+  - name: Spine_02
+    index: 6
+    isVirtual: 0
+  - name: Spine_03
+    index: 7
+    isVirtual: 0
+  - name: Clavicle_L
+    index: 8
+    isVirtual: 0
+  - name: Shoulder_L
+    index: 9
+    isVirtual: 0
+  - name: Elbow_L
+    index: 10
+    isVirtual: 0
+  - name: Hand_L
+    index: 11
+    isVirtual: 0
+  - name: Finger_01
+    index: 12
+    isVirtual: 0
+  - name: Finger_02
+    index: 13
+    isVirtual: 0
+  - name: Finger_03
+    index: 14
+    isVirtual: 0
+  - name: Finger_04
+    index: 15
+    isVirtual: 0
+  - name: IndexFinger_01
+    index: 16
+    isVirtual: 0
+  - name: IndexFinger_02
+    index: 17
+    isVirtual: 0
+  - name: IndexFinger_03
+    index: 18
+    isVirtual: 0
+  - name: IndexFinger_04
+    index: 19
+    isVirtual: 0
+  - name: Thumb_01
+    index: 20
+    isVirtual: 0
+  - name: Thumb_02
+    index: 21
+    isVirtual: 0
+  - name: Thumb_03
+    index: 22
+    isVirtual: 0
+  - name: Clavicle_R
+    index: 23
+    isVirtual: 0
+  - name: Shoulder_R
+    index: 24
+    isVirtual: 0
+  - name: Elbow_R
+    index: 25
+    isVirtual: 0
+  - name: Hand_R
+    index: 26
+    isVirtual: 0
+  - name: Finger_01 1
+    index: 27
+    isVirtual: 0
+  - name: Finger_02 1
+    index: 28
+    isVirtual: 0
+  - name: Finger_03 1
+    index: 29
+    isVirtual: 0
+  - name: Finger_04 1
+    index: 30
+    isVirtual: 0
+  - name: IndexFinger_01 1
+    index: 31
+    isVirtual: 0
+  - name: IndexFinger_02 1
+    index: 32
+    isVirtual: 0
+  - name: IndexFinger_03 1
+    index: 33
+    isVirtual: 0
+  - name: IndexFinger_04 1
+    index: 34
+    isVirtual: 0
+  - name: Thumb_01 1
+    index: 35
+    isVirtual: 0
+  - name: Thumb_02 1
+    index: 36
+    isVirtual: 0
+  - name: Thumb_03 1
+    index: 37
+    isVirtual: 0
+  - name: Neck
+    index: 38
+    isVirtual: 0
+  - name: Head
+    index: 39
+    isVirtual: 0
+  - name: Character_Hair_Female_01
+    index: 40
+    isVirtual: 0
+  - name: Character_Hair_Male_01
+    index: 41
+    isVirtual: 0
+  - name: Eyebrows
+    index: 42
+    isVirtual: 0
+  - name: Eyes
+    index: 43
+    isVirtual: 0
+  - name: UpperLeg_L
+    index: 44
+    isVirtual: 0
+  - name: LowerLeg_L
+    index: 45
+    isVirtual: 0
+  - name: Ankle_L
+    index: 46
+    isVirtual: 0
+  - name: Ball_L
+    index: 47
+    isVirtual: 0
+  - name: Toes_L
+    index: 48
+    isVirtual: 0
+  - name: UpperLeg_R
+    index: 49
+    isVirtual: 0
+  - name: LowerLeg_R
+    index: 50
+    isVirtual: 0
+  - name: Ankle_R
+    index: 51
+    isVirtual: 0
+  - name: Ball_R
+    index: 52
+    isVirtual: 0
+  - name: Toes_R
+    index: 53
+    isVirtual: 0
+  rigElementChains:
+  - chainName: SM_Character_Male_01
+    elementChain:
+    - name: SM_Character_Male_01
+      index: 0
+      isVirtual: 0
+  - chainName: Character_Female_Face_01
+    elementChain:
+    - name: Character_Female_Face_01
+      index: 1
+      isVirtual: 0
+  - chainName: Character_Male_Face_01
+    elementChain:
+    - name: Character_Male_Face_01
+      index: 2
+      isVirtual: 0
+  - chainName: Root
+    elementChain:
+    - name: Root
+      index: 3
+      isVirtual: 0
+    - name: Hips
+      index: 4
+      isVirtual: 0
+  - chainName: Spine_01
+    elementChain:
+    - name: Spine_01
+      index: 5
+      isVirtual: 0
+    - name: Spine_02
+      index: 6
+      isVirtual: 0
+    - name: Spine_03
+      index: 7
+      isVirtual: 0
+  - chainName: Clavicle_L
+    elementChain:
+    - name: Clavicle_L
+      index: 8
+      isVirtual: 0
+    - name: Shoulder_L
+      index: 9
+      isVirtual: 0
+    - name: Elbow_L
+      index: 10
+      isVirtual: 0
+    - name: Hand_L
+      index: 11
+      isVirtual: 0
+  - chainName: Finger_01
+    elementChain:
+    - name: Finger_01
+      index: 12
+      isVirtual: 0
+    - name: Finger_02
+      index: 13
+      isVirtual: 0
+    - name: Finger_03
+      index: 14
+      isVirtual: 0
+    - name: Finger_04
+      index: 15
+      isVirtual: 0
+  - chainName: IndexFinger_01
+    elementChain:
+    - name: IndexFinger_01
+      index: 16
+      isVirtual: 0
+    - name: IndexFinger_02
+      index: 17
+      isVirtual: 0
+    - name: IndexFinger_03
+      index: 18
+      isVirtual: 0
+    - name: IndexFinger_04
+      index: 19
+      isVirtual: 0
+  - chainName: Thumb_01
+    elementChain:
+    - name: Thumb_01
+      index: 20
+      isVirtual: 0
+    - name: Thumb_02
+      index: 21
+      isVirtual: 0
+    - name: Thumb_03
+      index: 22
+      isVirtual: 0
+  - chainName: Clavicle_R
+    elementChain:
+    - name: Clavicle_R
+      index: 23
+      isVirtual: 0
+    - name: Shoulder_R
+      index: 24
+      isVirtual: 0
+    - name: Elbow_R
+      index: 25
+      isVirtual: 0
+    - name: Hand_R
+      index: 26
+      isVirtual: 0
+  - chainName: Finger_01 1
+    elementChain:
+    - name: Finger_01 1
+      index: 27
+      isVirtual: 0
+    - name: Finger_02 1
+      index: 28
+      isVirtual: 0
+    - name: Finger_03 1
+      index: 29
+      isVirtual: 0
+    - name: Finger_04 1
+      index: 30
+      isVirtual: 0
+  - chainName: IndexFinger_01 1
+    elementChain:
+    - name: IndexFinger_01 1
+      index: 31
+      isVirtual: 0
+    - name: IndexFinger_02 1
+      index: 32
+      isVirtual: 0
+    - name: IndexFinger_03 1
+      index: 33
+      isVirtual: 0
+    - name: IndexFinger_04 1
+      index: 34
+      isVirtual: 0
+  - chainName: Thumb_01 1
+    elementChain:
+    - name: Thumb_01 1
+      index: 35
+      isVirtual: 0
+    - name: Thumb_02 1
+      index: 36
+      isVirtual: 0
+    - name: Thumb_03 1
+      index: 37
+      isVirtual: 0
+  - chainName: Neck
+    elementChain:
+    - name: Neck
+      index: 38
+      isVirtual: 0
+    - name: Head
+      index: 39
+      isVirtual: 0
+  - chainName: Character_Hair_Female_01
+    elementChain:
+    - name: Character_Hair_Female_01
+      index: 40
+      isVirtual: 0
+  - chainName: Character_Hair_Male_01
+    elementChain:
+    - name: Character_Hair_Male_01
+      index: 41
+      isVirtual: 0
+  - chainName: Eyebrows
+    elementChain:
+    - name: Eyebrows
+      index: 42
+      isVirtual: 0
+  - chainName: Eyes
+    elementChain:
+    - name: Eyes
+      index: 43
+      isVirtual: 0
+  - chainName: UpperLeg_L
+    elementChain:
+    - name: UpperLeg_L
+      index: 44
+      isVirtual: 0
+    - name: LowerLeg_L
+      index: 45
+      isVirtual: 0
+    - name: Ankle_L
+      index: 46
+      isVirtual: 0
+    - name: Ball_L
+      index: 47
+      isVirtual: 0
+    - name: Toes_L
+      index: 48
+      isVirtual: 0
+  - chainName: UpperLeg_R
+    elementChain:
+    - name: UpperLeg_R
+      index: 49
+      isVirtual: 0
+    - name: LowerLeg_R
+      index: 50
+      isVirtual: 0
+    - name: Ankle_R
+      index: 51
+      isVirtual: 0
+    - name: Ball_R
+      index: 52
+      isVirtual: 0
+    - name: Toes_R
+      index: 53
+      isVirtual: 0
+  rigCurves: []
+  rigDepths: 0000000001000000010000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000a0000000b0000000c0000000d0000000a0000000b0000000c000000060000000700000008000000090000000a0000000b0000000c0000000d0000000a0000000b0000000c0000000d0000000a0000000b0000000c00000006000000070000000800000008000000080000000800000003000000040000000500000006000000070000000300000004000000050000000600000007000000

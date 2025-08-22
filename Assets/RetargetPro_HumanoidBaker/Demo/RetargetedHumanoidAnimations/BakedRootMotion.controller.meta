@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5de7c312c07e69142b9b50770b6dd55d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/RetargetedHumanoidAnimations/BakedRootMotion.controller
+  uploadId: 768564

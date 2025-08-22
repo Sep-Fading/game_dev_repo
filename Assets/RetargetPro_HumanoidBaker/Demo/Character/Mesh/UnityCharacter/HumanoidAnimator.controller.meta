@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4e71900d55014cc4980e61577755ee24
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Character/Mesh/UnityCharacter/HumanoidAnimator.controller
+  uploadId: 768564

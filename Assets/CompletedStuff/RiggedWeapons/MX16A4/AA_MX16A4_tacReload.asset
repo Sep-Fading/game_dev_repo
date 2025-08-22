@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AA_MX16A4_tacReload
   m_EditorClassIdentifier: 
   rigAsset: {fileID: 11400000, guid: 6da400597fc0459458f6df09a032b31c, type: 2}
-  clip: {fileID: 7400000, guid: af9f8c0e8cb05d74d80d1e5c61d822f7, type: 2}
-  mask: {fileID: 0}
+  clip: {fileID: 7400000, guid: bf0eb8ed8dbabb54b8ab389566ed95e9, type: 2}
+  mask: {fileID: 31900000, guid: da8a97aebbeb93040a12cac7db6256b8, type: 2}
   overrideMask: {fileID: 0}
   isAdditive: 0
   blendTime:
