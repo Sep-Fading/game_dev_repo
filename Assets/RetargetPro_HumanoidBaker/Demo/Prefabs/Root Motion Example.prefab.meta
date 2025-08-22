@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5d9819087f7ecc84ba3f584054b20425
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Prefabs/Root Motion Example.prefab
+  uploadId: 768564

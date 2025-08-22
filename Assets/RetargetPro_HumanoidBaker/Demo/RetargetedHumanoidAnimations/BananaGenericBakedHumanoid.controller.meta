@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 654f93ddec5981441a39542ac90f67f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/RetargetedHumanoidAnimations/BananaGenericBakedHumanoid.controller
+  uploadId: 768564

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AA_rifle_idle
   m_EditorClassIdentifier: 
   rigAsset: {fileID: 11400000, guid: 6da400597fc0459458f6df09a032b31c, type: 2}
-  clip: {fileID: -203655887218126122, guid: 8230767c9bcb5484e8ba4420c3a9e7ae, type: 3}
+  clip: {fileID: 7400000, guid: aba000acc2a028a428ac24edebd988f2, type: 2}
   mask: {fileID: 0}
   overrideMask: {fileID: 0}
   isAdditive: 0

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 64b0a1443c6ed6a4ea1d07c33177dd42
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/RetargetedHumanoidAnimations/BananaMan
+    Ball In Hand Variant_GrenadeThrow_Humanoid Socket.anim
+  uploadId: 768564

@@ -204,37 +204,31 @@ MonoBehaviour:
     - name: Hips
       index: 1
       isVirtual: 0
-    isStandalone: 0
   - chainName: SpineRootChain
     elementChain:
     - name: Spine_01
       index: 2
       isVirtual: 0
-    isStandalone: 0
   - chainName: RightHandChain
     elementChain:
     - name: Hand_R
       index: 24
       isVirtual: 0
-    isStandalone: 0
   - chainName: LeftHandChain
     elementChain:
     - name: Hand_L
       index: 8
       isVirtual: 0
-    isStandalone: 0
   - chainName: RightFootChain
     elementChain:
     - name: Ankle_R
       index: 52
       isVirtual: 0
-    isStandalone: 0
   - chainName: LeftFootChain
     elementChain:
     - name: Ankle_L
       index: 47
       isVirtual: 0
-    isStandalone: 0
   rigCurves:
   - Overlay
   - WeaponBoneWeight

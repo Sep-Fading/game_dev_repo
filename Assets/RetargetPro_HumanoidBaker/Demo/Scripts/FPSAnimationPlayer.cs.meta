@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8700d6bd484e53c42a5fe392551dbc64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Scripts/FPSAnimationPlayer.cs
+  uploadId: 768564

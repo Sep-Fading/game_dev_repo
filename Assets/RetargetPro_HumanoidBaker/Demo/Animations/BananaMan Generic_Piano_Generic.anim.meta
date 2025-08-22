@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 73db4aec3a3a0454b929265517a077fa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Animations/BananaMan Generic_Piano_Generic.anim
+  uploadId: 768564

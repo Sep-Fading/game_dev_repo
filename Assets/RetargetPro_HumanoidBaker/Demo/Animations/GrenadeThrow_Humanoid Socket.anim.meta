@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 20dcbb6e90fa5224da5eb6a511e64f86
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.4
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Animations/GrenadeThrow_Humanoid
+    Socket.anim
+  uploadId: 768564
