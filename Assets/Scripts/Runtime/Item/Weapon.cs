@@ -213,7 +213,7 @@ namespace Demo.Scripts.Runtime.Item
             CancelInvoke(nameof(OnFire));
             return true;
         }
-
+        
         public override bool OnReload()
         {
             if (!FPSAnimationAsset.IsValid(reloadClip))

@@ -630,8 +630,8 @@ MonoBehaviour:
       index: 39
       isVirtual: 0
     pose:
-      position: {x: 0, y: -0.05, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      position: {x: 0.15, y: 0.03, z: -0.08}
+      rotation: {x: 0.002253599, y: 0.11606372, z: -0.00026334132, w: 0.99323916}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -641,8 +641,8 @@ MonoBehaviour:
       index: 40
       isVirtual: 0
     pose:
-      position: {x: 0.05, y: 0.06, z: 0.08}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      position: {x: 0.03, y: 0.06, z: 0.05}
+      rotation: {x: 0.014129968, y: 0.03241191, z: 0.027513254, w: -0.9989959}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -652,8 +652,8 @@ MonoBehaviour:
       index: 41
       isVirtual: 0
     pose:
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      position: {x: 0, y: 0, z: 0.03}
+      rotation: {x: -0.011257539, y: 0.091862574, z: -0.03668893, w: -0.9950318}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -693,8 +693,8 @@ MonoBehaviour:
     isVirtual: 0
   elementChainName: LeftHandChain
   handPoseOffset:
-    position: {x: -0.08, y: -0.38, z: 0.16}
-    rotation: {x: -0.5700702, y: -0.26625937, z: 0.016582519, w: 0.7770785}
+    position: {x: -0.12, y: -0.38, z: 0.15}
+    rotation: {x: -0.57579225, y: -0.3250733, z: -0.049677983, w: 0.7485471}
     scale: {x: 1, y: 1, z: 1}
   overridePoseWeight: 0
 --- !u!114 &8233598396909877105

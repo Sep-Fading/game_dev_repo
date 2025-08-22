@@ -64,7 +64,7 @@ MonoBehaviour:
   overrideController: {fileID: 9100000, guid: 70b165214a68c65428af65a49a82895b, type: 2}
   equipMotion: {fileID: 11400000, guid: 049088e57e1f78049914dbd2c6462d0a, type: 2}
   unEquipMotion: {fileID: 11400000, guid: 2cc909b8396ffe647a71258c5344ceb5, type: 2}
-  fieldOfView: 90
+  fieldOfView: 60
   reloadClip: {fileID: 11400000, guid: ed46ec1d3be54a642ba27e707672f17c, type: 2}
   cameraReloadAnimation: {fileID: 0}
   grenadeClip: {fileID: 0}
@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 1029515803655274145}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.063, z: -0.2501}
+  m_LocalPosition: {x: 0, y: 0.063, z: -0.2806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

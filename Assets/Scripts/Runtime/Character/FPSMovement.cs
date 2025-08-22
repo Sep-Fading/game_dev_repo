@@ -31,7 +31,8 @@ using UnityEngine.InputSystem;
         public delegate void OnActionCallback();
         
         [SerializeField] private FPSMovementSettings movementSettings;
-        
+
+        public Camera cam;
         public OnActionCallback onStartMoving;
         public OnActionCallback onStopMoving;
         
@@ -413,6 +414,11 @@ using UnityEngine.InputSystem;
         
         private void Update()
         {
+            Debug.DrawRay(
+                cam.transform.position, 
+                cam.transform.forward * 100f, 
+                Color.red
+            );
             UpdateMovementState();
             
             if (_cachedMovementState != MovementState)
