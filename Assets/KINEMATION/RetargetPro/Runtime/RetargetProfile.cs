@@ -1,9 +1,10 @@
-// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
-using KINEMATION.KAnimationCore.Runtime.Rig;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 
 using System.Collections.Generic;
-using KINEMATION.KAnimationCore.Runtime.Attributes;
+using KINEMATION.Shared.KAnimationCore.Runtime.Attributes;
 using KINEMATION.RetargetPro.Runtime.Features;
 using UnityEngine;
 

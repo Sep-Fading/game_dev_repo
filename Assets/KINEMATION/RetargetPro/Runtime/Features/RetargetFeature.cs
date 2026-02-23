@@ -1,6 +1,7 @@
-﻿// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
-using KINEMATION.KAnimationCore.Runtime.Rig;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 
 using System;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine;
 namespace KINEMATION.RetargetPro.Runtime.Features
 {
     [Serializable]
-    public abstract class RetargetFeature : ScriptableObject, IRigUser
+    public abstract class RetargetFeature : ScriptableObject, IRigUser, IRigProvider
     {
         [HideInInspector] public KRig sourceRig;
         [HideInInspector] public KRig targetRig;
@@ -52,5 +53,9 @@ namespace KINEMATION.RetargetPro.Runtime.Features
             return GetType().Name;
         }
 #endif
+        public KRigElement[] GetHierarchy()
+        {
+            return targetRig == null ? null : targetRig.GetHierarchy();
+        }
     }
 }

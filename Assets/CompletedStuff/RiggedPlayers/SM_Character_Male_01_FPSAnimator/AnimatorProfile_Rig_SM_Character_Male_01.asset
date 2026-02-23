@@ -556,8 +556,8 @@ MonoBehaviour:
   isStandalone: 0
   poseToSample: {fileID: 11400000, guid: 089062ce14874024a9d8484148c0cf2b, type: 2}
   defaultWeaponPose:
-    position: {x: 0.0231, y: 0.5037, z: 0.339}
-    rotation: {x: -0.06444408, y: 0.017520603, z: -0.0011316249, w: -0.99776685}
+    position: {x: 0.05678406, y: 0.592501, z: 0.30711958}
+    rotation: {x: -0.1168956, y: 0.0036832534, z: 0.00043352926, w: 0.9931373}
     scale: {x: 1, y: 1, z: 1}
   weaponBoneOffset:
     position: {x: 0, y: 0, z: 0}
@@ -630,8 +630,8 @@ MonoBehaviour:
       index: 39
       isVirtual: 0
     pose:
-      position: {x: 0.05, y: -0.1, z: 0.1}
-      rotation: {x: -0.038741045, y: -0.0007562281, z: 0.0051948735, w: 0.99923545}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0.15669304, y: 0, z: 0, w: 0.98764735}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -641,8 +641,8 @@ MonoBehaviour:
       index: 40
       isVirtual: 0
     pose:
-      position: {x: -0.01, y: 0.02, z: -0.02}
-      rotation: {x: 0.018824762, y: 0.22354363, z: -0.21847217, w: -0.9497073}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
       isVirtual: 0
     pose:
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 2.3310892e-10, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     space: 0
     modifyMode: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Name: AttachHandLayerSettings
   m_EditorClassIdentifier: 
   rigAsset: {fileID: 11400000, guid: 6da400597fc0459458f6df09a032b31c, type: 2}
-  alpha: 0.596
+  alpha: 0
   curveBlending: []
   linkDynamically: 0
   isStandalone: 0
@@ -693,8 +693,8 @@ MonoBehaviour:
     isVirtual: 0
   elementChainName: LeftHandChain
   handPoseOffset:
-    position: {x: -0.125, y: -0.165, z: 0}
-    rotation: {x: -0.41459864, y: -0.5289285, z: 0.004959807, w: 0.7404851}
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     scale: {x: 1, y: 1, z: 1}
   overridePoseWeight: 0
 --- !u!114 &8233598396909877105

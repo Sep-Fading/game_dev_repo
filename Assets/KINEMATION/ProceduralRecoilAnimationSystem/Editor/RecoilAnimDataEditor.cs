@@ -1,6 +1,6 @@
 ﻿// Designed by KINEMATION, 2025.
 
-using KINEMATION.KAnimationCore.Editor.Misc;
+using KINEMATION.KAnimationCore.Editor.Tools;
 using KINEMATION.ProceduralRecoilAnimationSystem.Runtime;
 using UnityEditor;
 

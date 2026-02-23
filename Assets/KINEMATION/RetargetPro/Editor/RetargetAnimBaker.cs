@@ -1,7 +1,8 @@
-// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System;
-using KINEMATION.KAnimationCore.Runtime.Rig;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 using KINEMATION.RetargetPro.Runtime;
 
 using System.IO;
@@ -172,22 +173,24 @@ namespace KINEMATION.RetargetPro.Editor
                 name = $"{_targetCharacter.name}_{animationToRetarget.name}",
                 frameRate = _frameRate
             };
-
-            float playBack = 0f;
-            float delta = 1f / _frameRate;
             
-            while (playBack <= animationToRetarget.length)
-            {
-                RetargetAtTime(animationToRetarget, null, playBack);
-                baker.BakeAnimationFrame(playBack);
-                playBack += delta;
-            }
+            float delta = 1f / _frameRate;
+            float playback = 0f;
+            int framesCount = Mathf.FloorToInt(animationToRetarget.length * _frameRate);
 
-            if (playBack - delta < animationToRetarget.length)
+            while (playback <= animationToRetarget.length)
             {
-                RetargetAtTime(animationToRetarget, null, animationToRetarget.length);
-                baker.BakeAnimationFrame(animationToRetarget.length);
+                RetargetAtTime(animationToRetarget, null, playback);
+                baker.BakeAnimationFrame(playback);
+                playback += delta;
             }
+            /*
+            for (int i = 0; i <= framesCount; i++)
+            {
+                float time = i / _frameRate;
+                RetargetAtTime(animationToRetarget, null, time);
+                baker.BakeAnimationFrame(time);
+            }*/
             
             baker.WriteToClip(clip);
             if (_useRootMotion) baker.WriteRootMotion(animationToRetarget, clip);

@@ -1,24 +1,36 @@
-﻿// Designed by KINEMATION, 2024.
-
-using KINEMATION.KAnimationCore.Runtime.Input;
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System.Collections.Generic;
-using KINEMATION.KAnimationCore.Runtime.Attributes;
+using KINEMATION.Shared.KAnimationCore.Runtime.Attributes;
+using KINEMATION.Shared.KAnimationCore.Runtime.Input;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
+using Object = UnityEngine.Object;
 
-namespace KINEMATION.KAnimationCore.Runtime.Rig
+namespace KINEMATION.Shared.KAnimationCore.Runtime.Rig
 {
-    // Character skeleton asset.
-    [CreateAssetMenu(fileName = "NewRig", menuName = "KINEMATION/Rig")]
-    public class KRig : ScriptableObject
+    [MovedFrom("KINEMATION.KAnimationCore.Runtime.Rig")]
+    public abstract class KRigBase : ScriptableObject, IRigProvider
     {
         public RuntimeAnimatorController targetAnimator;
-        public UserInputConfig inputConfig;
         public List<KRigElement> rigHierarchy = new List<KRigElement>();
-
+        
         [CustomElementChainDrawer(false, true)]
         public List<KRigElementChain> rigElementChains = new List<KRigElementChain>();
+        
+        public KRigElement[] GetHierarchy()
+        {
+            return rigHierarchy.ToArray();
+        }
+    }
+    
+    // Character skeleton asset.
+    [MovedFrom("KINEMATION.KAnimationCore.Runtime.Rig")]
+    public class KRig : KRigBase
+    {
+        public UserInputConfig inputConfig;
         public List<string> rigCurves = new List<string>();
 
         public KRigElementChain GetElementChainByName(string chainName)
@@ -49,6 +61,18 @@ namespace KINEMATION.KAnimationCore.Runtime.Rig
 #if UNITY_EDITOR
         public List<int> rigDepths = new List<int>();
         private List<Object> _rigObservers = new List<Object>();
+
+        private void OnEnable()
+        {
+            // Force update rig depths for compatibility reasons.
+            int count = rigHierarchy.Count;
+            for (int i = 0; i < count; i++)
+            {
+                var element = rigHierarchy[i];
+                element.depth = rigDepths[i];
+                rigHierarchy[i] = element;
+            }
+        }
 
         public void ImportRig(KRigComponent rigComponent)
         {

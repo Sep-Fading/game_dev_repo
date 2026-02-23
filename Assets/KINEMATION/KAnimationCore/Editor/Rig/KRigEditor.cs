@@ -1,10 +1,13 @@
-﻿using KINEMATION.KAnimationCore.Editor.Misc;
-using KINEMATION.KAnimationCore.Runtime.Input;
-using KINEMATION.KAnimationCore.Runtime.Rig;
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
+
+using KINEMATION.Shared.KAnimationCore.Editor.Widgets;
+using KINEMATION.Shared.KAnimationCore.Runtime.Input;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 using UnityEditor;
 using UnityEngine;
 
-namespace KINEMATION.KAnimationCore.Editor.Rig
+namespace KINEMATION.Shared.KAnimationCore.Editor.Rig
 {
     [CustomEditor(typeof(KRig), true)]
     public class KRigEditor : UnityEditor.Editor
@@ -17,28 +20,9 @@ namespace KINEMATION.KAnimationCore.Editor.Rig
 
         private KToolbarWidget _kToolbarWidget;
         private RigTreeWidget _rigTreeWidget;
-
-        private (string, int)[] _elementNamesAndDepths;
-
-        private void PopulateNameContainer()
-        {
-            if (_rigAsset.rigHierarchy == null) return;
-
-            int count = _rigAsset.rigHierarchy.Count;
-            _elementNamesAndDepths = new (string, int)[count];
-            
-            for (int i = 0; i < count; i++)
-            {
-                string elementName = _rigAsset.rigHierarchy[i].name;
-                int depth = _rigAsset.rigDepths[i];
-                _elementNamesAndDepths[i] = (elementName, depth);
-            }
-        }
         
         private void RenderHierarchy()
         {
-            if (_elementNamesAndDepths.Length == 0) return;
-            
             _rigTreeWidget.Render();
         }
 
@@ -78,20 +62,13 @@ namespace KINEMATION.KAnimationCore.Editor.Rig
                 }
             });
             
-            PopulateNameContainer();
             _rigTreeWidget = new RigTreeWidget();
-            _rigTreeWidget.Refresh(ref _elementNamesAndDepths);
+            _rigTreeWidget.Refresh(_rigAsset.GetHierarchy());
         }
 
-        private bool ImportRig()
+        private void ImportRig()
         {
-            if (_rigAsset == null)
-            {
-                return false;
-            }
-            
             _rigAsset.ImportRig(_rigComponent);
-            return true;
         }
 
         public override void OnInspectorGUI()
@@ -112,8 +89,7 @@ namespace KINEMATION.KAnimationCore.Editor.Rig
             else if (GUILayout.Button("Import Rig"))
             {
                 ImportRig();
-                PopulateNameContainer();
-                _rigTreeWidget.Refresh(ref _elementNamesAndDepths);
+                _rigTreeWidget.Refresh(_rigAsset.GetHierarchy());
             }
             
             _kToolbarWidget.Render();

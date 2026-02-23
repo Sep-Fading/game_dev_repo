@@ -1,10 +1,9 @@
-// Designed by KINEMATION, 2023
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
-using Unity.Collections;
-using Unity.Jobs;
 using UnityEngine;
 
-namespace KINEMATION.KAnimationCore.Runtime.Core
+namespace KINEMATION.Shared.KAnimationCore.Runtime.Core
 {
     public struct KTwoBoneIkData
     {
@@ -30,7 +29,7 @@ namespace KINEMATION.KAnimationCore.Runtime.Core
             Vector3 cPosition = ikData.tip.position;
             
             Vector3 tPosition = Vector3.Lerp(cPosition, ikData.target.position, ikData.posWeight);
-            Quaternion tRotation = Quaternion.Lerp(ikData.tip.rotation, ikData.target.rotation, ikData.rotWeight);
+            Quaternion tRotation = Quaternion.Slerp(ikData.tip.rotation, ikData.target.rotation, ikData.rotWeight);
             bool hasHint = ikData.hasValidHint && ikData.hintWeight > 0f;
 
             Vector3 ab = bPosition - aPosition;
@@ -118,18 +117,6 @@ namespace KINEMATION.KAnimationCore.Runtime.Core
             }
             
             ikData.tip.rotation = tRotation;
-        }
-    }
-
-    public struct KTwoBoneIKJob : IJobParallelFor
-    {
-        public NativeArray<KTwoBoneIkData> twoBoneIkJobData;
-
-        public void Execute(int index)
-        {
-            var twoBoneIkData = twoBoneIkJobData[index];
-            KTwoBoneIK.Solve(ref twoBoneIkData);
-            twoBoneIkJobData[index] = twoBoneIkData;
         }
     }
 }

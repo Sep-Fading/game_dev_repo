@@ -1,81 +1,81 @@
-﻿// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
-using KINEMATION.KAnimationCore.Editor.Misc;
-using KINEMATION.KAnimationCore.Runtime.Attributes;
-using KINEMATION.KAnimationCore.Runtime.Rig;
-
-using System.Linq;
-
+using System.Collections.Generic;
+using KINEMATION.Shared.KAnimationCore.Editor.Rig;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 using UnityEditor;
 using UnityEngine;
 
-namespace KINEMATION.KAnimationCore.Editor.Attributes
+namespace KINEMATION.Shared.KAnimationCore.Editor.Attributes
 {
     [CustomPropertyDrawer(typeof(KRigElement))]
     public class RigElementDrawer : PropertyDrawer
     {
-        private void SelectRigElement(Rect position, SerializedProperty property, GUIContent label)
+        private void DrawRigElement(Rect position, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.BeginProperty(position, label, property);
-
-            KRig rig = RigDrawerUtility.TryGetRigAsset(fieldInfo, property);
+            IRigProvider rig = RigEditorUtility.TryGetRigProvider(fieldInfo, property);
             
             SerializedProperty name = property.FindPropertyRelative("name");
             SerializedProperty index = property.FindPropertyRelative("index");
 
-            if (rig != null)
+            if (rig == null)
             {
-                var rigHierarchy = rig.rigHierarchy;
-                
-                // Calculate label width
-                float labelWidth = EditorGUIUtility.labelWidth;
-                float indentLevel = EditorGUI.indentLevel;
-
-                // Calculate button width and property field width
-                float totalWidth = position.width - indentLevel - labelWidth;
-
-                // Display the default property field
-                Rect propertyFieldRect = new Rect(position.x + indentLevel, position.y,
-                    labelWidth, position.height);
-                
-                GUI.enabled = false;
-                EditorGUI.LabelField(propertyFieldRect, label.text);
-                GUI.enabled = true;
-
-                // Display the bone selection button
-                Rect buttonRect = new Rect(position.x + indentLevel + labelWidth, position.y,
-                    totalWidth, EditorGUIUtility.singleLineHeight);
-
-                string currentName = string.IsNullOrEmpty(name.stringValue) ? "None" : name.stringValue;
-
-                if (GUI.Button(buttonRect, currentName))
-                {
-                    var elementNames = rigHierarchy.Select(element => element.name).ToList();
-                    KSelectorWindow.ShowWindow(ref elementNames, ref rig.rigDepths,
-                        (selectedName, selectedIndex) =>
-                        {
-                            name.stringValue = selectedName;
-                            index.intValue = selectedIndex;
-                            name.serializedObject.ApplyModifiedProperties();
-                        },
-                        items => { },
-                        false, null, "Rig Element Selection"
-                    );
-                }
-            }
-            else
-            {
-                GUI.enabled = false;
                 EditorGUI.PropertyField(position, name, label, true);
-                GUI.enabled = true;
+                return;
             }
+            
+            // Calculate label width
+            float labelWidth = EditorGUIUtility.labelWidth;
+            float indentLevel = EditorGUI.indentLevel;
 
-            EditorGUI.EndProperty();
+            // Calculate button width and property field width
+            float totalWidth = position.width - indentLevel - labelWidth;
+
+            // Display the default property field
+            Rect propertyFieldRect = new Rect(position.x + indentLevel, position.y,
+                labelWidth, position.height);
+            
+            EditorGUI.LabelField(propertyFieldRect, label.text);
+
+            // Display the bone selection button
+            Rect buttonRect = new Rect(position.x + indentLevel + labelWidth, position.y,
+                totalWidth, EditorGUIUtility.singleLineHeight);
+
+            string currentName = string.IsNullOrEmpty(name.stringValue) ? "None" : name.stringValue;
+
+            if (GUI.Button(buttonRect, currentName))
+            {
+                var hierarchy = rig.GetHierarchy();
+                if (hierarchy == null) return;
+
+                List<int> selection = null;
+                if (index.intValue > -1 || !string.IsNullOrEmpty(name.stringValue))
+                {
+                    int foundIndex = ArrayUtility.FindIndex(hierarchy,
+                        element => element.name.Equals(name.stringValue));
+                    if(foundIndex >= 0) selection = new List<int>() { foundIndex + 1 };
+                }
+
+                RigWindow.ShowWindow(hierarchy, (selectedElement) =>
+                    {
+                        name.stringValue = selectedElement.name;
+                        index.intValue = selectedElement.index;
+                        name.serializedObject.ApplyModifiedProperties();
+                    },
+                    items => { },
+                    false, selection, "Rig Element Selection"
+                );
+            }
         }
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SelectRigElement(position, property, label);
+            EditorGUI.BeginProperty(position, label, property);
+
+            DrawRigElement(position, property, label);
+
+            EditorGUI.EndProperty();
         }
     }
 }

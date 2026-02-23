@@ -1,6 +1,7 @@
-// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
-using KINEMATION.KAnimationCore.Runtime.Rig;
+using KINEMATION.Shared.KAnimationCore.Runtime.Rig;
 using UnityEngine;
 
 namespace KINEMATION.RetargetPro.Runtime.Features.BonePoser
@@ -33,9 +34,18 @@ namespace KINEMATION.RetargetPro.Runtime.Features.BonePoser
             for (int i = 0; i < count; i++)
             {
                 var bone = _boneChain.transformChain[i];
-                var defaultRotation = _boneChain.cachedTransforms[i].rotation;
-                bone.localRotation = Quaternion.Slerp(defaultRotation, defaultRotation * _asset.rotationPose, 
-                    _asset.featureWeight);
+                Quaternion defaultRotation = _boneChain.cachedTransforms[i].rotation;
+
+                if (_asset.isAdditive)
+                {
+                    bone.localRotation *= Quaternion.Slerp(Quaternion.identity, _asset.rotationPose, 
+                        _asset.featureWeight);
+                }
+                else
+                {
+                    bone.localRotation = Quaternion.Slerp(defaultRotation, defaultRotation * _asset.rotationPose,
+                        _asset.featureWeight);
+                }
             }
         }
     }

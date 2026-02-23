@@ -1,0 +1,10 @@
+Player
+ ├── Camera
+ ├── ViewModel (Kinemation)
+ │     └── Kinemation Listener (ACTIVE)
+ │
+ └── WorldModel (Humanoid)
+       ├── Animator
+       ├── Foot IK System
+       ├── Grounding Solver
+       └── (Optional) Animation Rigging constraints

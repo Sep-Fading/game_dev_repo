@@ -16,6 +16,7 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Weapon
         public FPSCameraShake cameraShake;
         
         [Header("IK")]
+        public Quaternion rotationOffset = Quaternion.Euler(90f, 0f, 0f);
         public Vector3 ikOffset;
         public Vector3 leftClavicleOffset;
         public Vector3 rightClavicleOffset;

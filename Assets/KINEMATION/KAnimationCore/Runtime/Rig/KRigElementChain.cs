@@ -1,18 +1,30 @@
-﻿// Designed by KINEMATION, 2024.
-
-using KINEMATION.KAnimationCore.Runtime.Core;
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System;
 using System.Collections.Generic;
+using KINEMATION.Shared.KAnimationCore.Runtime.Core;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
-namespace KINEMATION.KAnimationCore.Runtime.Rig
+namespace KINEMATION.Shared.KAnimationCore.Runtime.Rig
 {
+    [MovedFrom("KINEMATION.KAnimationCore.Runtime.Rig")]
     [Serializable]
     public class KRigElementChain
     {
+        public int Count => elementChain.Count;
+        
         public string chainName;
         [HideInInspector] public List<KRigElement> elementChain = new List<KRigElement>();
+
+        public KRigElementChain GetCopy()
+        {
+            KRigElementChain copy = new KRigElementChain();
+            copy.chainName = chainName;
+            foreach (var element in elementChain) copy.elementChain.Add(element);
+            return copy;
+        }
     }
 
     // A simplified version of the KRigElementChain, which contains transforms only.

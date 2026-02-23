@@ -1,14 +1,14 @@
-﻿// Designed by KINEMATION, 2024.
-
-using KINEMATION.KAnimationCore.Runtime.Attributes;
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using KINEMATION.Shared.KAnimationCore.Runtime.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace KINEMATION.KAnimationCore.Editor.Misc
+namespace KINEMATION.Shared.KAnimationCore.Editor.Widgets
 {
     public struct EditorTab
     {
@@ -16,7 +16,7 @@ namespace KINEMATION.KAnimationCore.Editor.Misc
         public List<SerializedProperty> properties;
     }
     
-    public class TabInspectorWidget : IEditorTool
+    public class TabInspectorWidget
     {
         private SerializedObject _serializedObject;
 
@@ -87,7 +87,7 @@ namespace KINEMATION.KAnimationCore.Editor.Misc
             _tabNames = _editorTabs.Select(item => item.name).ToArray();
         }
         
-        public void Render()
+        public void OnGUI()
         {
             _serializedObject.Update();
             

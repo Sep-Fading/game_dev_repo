@@ -1,4 +1,5 @@
-﻿// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System.Collections.Generic;
 using UnityEditor;
@@ -33,7 +34,7 @@ namespace KINEMATION.RetargetPro.Editor
         private void AddLinearKey(AnimationCurve curve, float time, float value)
         {
             int index = curve.AddKey(time, value);
-            if (index < 0) return;
+            if (index < 0 || index > curve.keys.Length - 1) return;
 
             AnimationUtility.SetKeyLeftTangentMode(curve, index, AnimationUtility.TangentMode.Linear);
             AnimationUtility.SetKeyRightTangentMode(curve, index, AnimationUtility.TangentMode.Linear);

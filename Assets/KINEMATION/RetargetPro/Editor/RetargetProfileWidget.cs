@@ -1,3 +1,6 @@
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -61,9 +61,7 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Player
         private static int GAIT = Animator.StringToHash("Gait");
         private static int IS_IN_AIR = Animator.StringToHash("IsInAir");
         private static int INSPECT = Animator.StringToHash("Inspect");
-
-        private static Quaternion ANIMATED_OFFSET = Quaternion.Euler(90f, 0f, 0f);
-
+        
         private int _tacSprintLayerIndex;
         private int _triggerDisciplineLayerIndex;
         private int _rightHandLayerIndex;
@@ -347,7 +345,7 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Player
                 
                 var localWeapon = root.GetRelativeTransform(weaponT, false);
 
-                localWeapon.rotation *= ANIMATED_OFFSET;
+                localWeapon.rotation *= prefabComponent.weaponSettings.rotationOffset;
                 
                 component.adsPose.position = _localCameraPoint.position - localWeapon.position;
                 component.adsPose.rotation = Quaternion.Inverse(localWeapon.rotation);
@@ -548,7 +546,7 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Player
             KTransform weaponTransform = GetWeaponPose();
             
             weaponTransform.rotation = KAnimationMath.RotateInSpace(weaponTransform, weaponTransform,
-                ANIMATED_OFFSET, 1f);
+                GetActiveWeapon().weaponSettings.rotationOffset, 1f);
             
             KTransform rightHandTarget = weaponTransform.GetRelativeTransform(new KTransform(rightHand.tip), false);
             KTransform leftHandTarget = weaponTransform.GetRelativeTransform(new KTransform(leftHand.tip), false);
