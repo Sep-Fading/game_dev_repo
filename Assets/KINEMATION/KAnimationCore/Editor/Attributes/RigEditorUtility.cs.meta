@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ae9647974516cb947a30f257824c9e3e
+guid: 78e29d0b50bae282680c430fdedae383
 timeCreated: 1722195056
 AssetOrigin:
   serializedVersion: 1
-  productId: 240061
-  packageName: Retarget Pro
-  packageVersion: 4.2.1
+  productId: 238641
+  packageName: FPS Animation Framework
+  packageVersion: 4.9.3
   assetPath: Assets/KINEMATION/KAnimationCore/Editor/Attributes/RigEditorUtility.cs
-  uploadId: 852970
+  uploadId: 852960

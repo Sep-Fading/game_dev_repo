@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 525a3c0a84b214441971533a3f8f050e
+guid: 7cc0d46922559f58aa2f456c65757aca
 timeCreated: 1709881756
 AssetOrigin:
   serializedVersion: 1
-  productId: 240061
-  packageName: Retarget Pro
-  packageVersion: 4.2.1
+  productId: 238641
+  packageName: FPS Animation Framework
+  packageVersion: 4.9.3
   assetPath: Assets/KINEMATION/KAnimationCore/Runtime/Core/SetFloat.cs
-  uploadId: 852970
+  uploadId: 852960
