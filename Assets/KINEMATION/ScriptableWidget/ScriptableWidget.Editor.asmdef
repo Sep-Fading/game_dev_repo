@@ -1,7 +1,9 @@
 {
     "name": "ScriptableWidget.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:9e0de4a12aaad02499ffafb271fc9e4c"
+    ],
     "includePlatforms": [
         "Editor"
     ],

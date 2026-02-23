@@ -1,31 +1,32 @@
-// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using KINEMATION.Shared.ScriptableWidget.Runtime;
 using UnityEditor;
+using UnityEditor.IMGUI.Controls;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Object = UnityEngine.Object;
 
-namespace KINEMATION.ScriptableWidget
+namespace KINEMATION.Shared.ScriptableWidget.Editor
 {
     public class ScriptableComponentListWidget
     {
+        public Vector2 minSize = Vector2.zero;
         public float headerSpaceRatio = 0.5f;
-        
-        public delegate void ComponentAction();
-        
-        public delegate void DrawElementHeader(SerializedProperty property, Rect rect);
-        public delegate void SelectionAction(int selectedIndex);
 
-        public ComponentAction onComponentAdded;
-        public ComponentAction onComponentPasted;
-        public ComponentAction onComponentRemoved;
-        public DrawElementHeader onDrawComponentHeader;
-        public SelectionAction onComponentSelected;
+        public Action<ScriptableObject> onComponentCreated;
+        public Action<int> onComponentAdded;
+        public Action<int> onComponentPasted;
+        public Action onComponentRemoved;
+        public Action<int, SerializedProperty, Rect> onDrawComponentHeader;
+        public Action<int> onComponentSelected;
+
+        public Func<string> editButtonText;
         
         private SerializedObject _serializedObject;
         private SerializedProperty _componentsProperty;
@@ -33,7 +34,7 @@ namespace KINEMATION.ScriptableWidget
         
         private Type _collectionType;
         
-        private List<Editor> _editors;
+        private List<UnityEditor.Editor> _editors;
 
         private bool _isInitialized;
         private ReorderableList _componentsList;
@@ -41,7 +42,9 @@ namespace KINEMATION.ScriptableWidget
         private ScriptableComponentEditorWindow _componentEditorWindow;
         private GUIStyle _elementButtonStyle;
 
+        private AdvancedDropdownState _dropdownState;
         private Type[] _componentTypes;
+        private List<string> _typeOptions;
         private string _friendlyComponentName;
 
         private bool _useStandaloneWindow;
@@ -50,13 +53,15 @@ namespace KINEMATION.ScriptableWidget
         public ScriptableComponentListWidget(string friendlyComponentName)
         {
             _friendlyComponentName = friendlyComponentName;
+            _dropdownState = new AdvancedDropdownState();
         }
 
-        public void AddComponent(Type type)
+        public void AddComponent(Type type, string componentName)
         {
             _serializedObject.Update();
             
             ScriptableObject newComponent = CreateNewComponent(type);
+            newComponent.name = componentName;
             
             Undo.RegisterCreatedObjectUndo(newComponent, "Add Component");
             AssetDatabase.AddObjectToAsset(newComponent, _asset);
@@ -65,13 +70,13 @@ namespace KINEMATION.ScriptableWidget
             var componentProp = _componentsProperty.GetArrayElementAtIndex(_componentsProperty.arraySize - 1);
             componentProp.objectReferenceValue = newComponent;
 
-            _editors.Add(Editor.CreateEditor(newComponent));
+            _editors.Add(UnityEditor.Editor.CreateEditor(newComponent));
             _serializedObject.ApplyModifiedProperties();
             
             EditorUtility.SetDirty(_asset);
             AssetDatabase.SaveAssetIfDirty(_asset);
             
-            onComponentAdded?.Invoke();
+            onComponentAdded?.Invoke(_componentsProperty.arraySize - 1);
         }
         
         private ScriptableObject CreateNewComponent(Type type)
@@ -79,12 +84,14 @@ namespace KINEMATION.ScriptableWidget
             var instance = ScriptableObject.CreateInstance(type);
             instance.hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
             instance.name = type.Name;
+            
+            onComponentCreated?.Invoke(instance);
             return instance;
         }
 
-        private void OnTypeSelected(object userData, string[] options, int selected)
+        private void OnTypeSelected(int selected, string componentName)
         {
-            AddComponent(_componentTypes[selected]);
+            AddComponent(_componentTypes[selected], componentName);
         }
 
         public void RemoveComponent(int index)
@@ -107,10 +114,10 @@ namespace KINEMATION.ScriptableWidget
             _componentsProperty.DeleteArrayElementAtIndex(index);
             
             _serializedObject.ApplyModifiedProperties();
-            Undo.DestroyObjectImmediate(component);
+            if(component != null) Undo.DestroyObjectImmediate(component);
             
             EditorUtility.SetDirty(_asset);
-            AssetDatabase.SaveAssets();
+            AssetDatabase.SaveAssetIfDirty(_asset);
             
             onComponentRemoved?.Invoke();
         }
@@ -156,7 +163,7 @@ namespace KINEMATION.ScriptableWidget
             if (!CanPaste(component)) return;
             
             PasteComponent(component);
-            onComponentPasted?.Invoke();
+            onComponentPasted?.Invoke(index);
         }
 
         private void SetupReorderableList(string targetSerializedPropertyName)
@@ -168,6 +175,11 @@ namespace KINEMATION.ScriptableWidget
             _componentsList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
             {
                 var element = _componentsList.serializedProperty.GetArrayElementAtIndex(index);
+                if (element.objectReferenceValue == null)
+                {
+                    EditorGUI.LabelField(rect, "Invalid element: please, remove it!");
+                    return;
+                }
 
                 float singleHeight = EditorGUIUtility.singleLineHeight;
                 rect.y += 1;
@@ -181,14 +193,15 @@ namespace KINEMATION.ScriptableWidget
                 string elementName = element.objectReferenceValue.name;
                 if (onDrawComponentHeader != null)
                 {
-                    onDrawComponentHeader.Invoke(element, labelRect);
+                    onDrawComponentHeader.Invoke(index, element, labelRect);
                 }
                 else
                 {
                     EditorGUI.LabelField(labelRect, elementName);
                 }
-                
-                if (GUI.Button(buttonRect, "Edit Layer", EditorStyles.miniButton))
+
+                string buttonText = editButtonText == null ? "Edit Layer" : editButtonText.Invoke();
+                if (GUI.Button(buttonRect, buttonText, EditorStyles.miniButton))
                 {
                     if (_useStandaloneWindow)
                     {
@@ -199,6 +212,8 @@ namespace KINEMATION.ScriptableWidget
 
                         _componentEditorWindow.RefreshEditor(_editors[index], $"{elementName} Editor");
 
+                        if(!minSize.Equals(Vector2.zero)) _componentEditorWindow.minSize = minSize;
+                        
                         _componentEditorWindow.Show();
                         _componentEditorWindow.Repaint();
                     }
@@ -209,9 +224,13 @@ namespace KINEMATION.ScriptableWidget
                     
                     onComponentSelected?.Invoke(index);
                 }
+
+                float dragHandleWidth = 16f;
+                rect.x -= dragHandleWidth;
+                rect.width += dragHandleWidth;
                 
                 if (Event.current.type == EventType.MouseUp && Event.current.button == 1 
-                    && labelRect.Contains(Event.current.mousePosition))
+                    && rect.Contains(Event.current.mousePosition))
                 {
                     GUIContent[] menuOptions = new GUIContent[]
                     {
@@ -219,14 +238,13 @@ namespace KINEMATION.ScriptableWidget
                         new GUIContent("Paste")
                     };
                 
-                    EditorUtility.DisplayCustomMenu(new Rect(Event.current.mousePosition, Vector2.zero), 
-                        menuOptions, -1, OnContextMenuSelection, index);
+                    EditorUtility.DisplayCustomMenu(rect, menuOptions, -1, OnContextMenuSelection, index);
                 }
             };
 
             _componentsList.onReorderCallbackWithDetails = (ReorderableList list, int oldIndex, int newIndex) =>
             {
-                Editor editorToMove = _editors[oldIndex];
+                UnityEditor.Editor editorToMove = _editors[oldIndex];
                 
                 _editors.RemoveAt(oldIndex);
                 if (newIndex > oldIndex)
@@ -272,23 +290,34 @@ namespace KINEMATION.ScriptableWidget
             }
 
             List<Type> collectionTypes = new List<Type>();
+            _typeOptions = new List<string>();
             var allCollectionTypes = TypeCache.GetTypesDerivedFrom(_collectionType).ToArray();
 
             foreach (var type in allCollectionTypes)
             {
                 if(type.IsAbstract) continue;
                 collectionTypes.Add(type);
+                string typePath = type.Name;
+
+                var attributes = type.GetCustomAttributes(true);
+                foreach (var attr in attributes)
+                {
+                    if (attr is not ScriptableComponentGroupAttribute groupAttr) continue;
+                    typePath = $"{groupAttr.group}.{groupAttr.shortName}";
+                }
+                
+                _typeOptions.Add(typePath);
             }
             
             _componentTypes = collectionTypes.ToArray();
-            _editors = new List<Editor>();
+            _editors = new List<UnityEditor.Editor>();
 
             // Create editors for the current components.
             int arraySize = _componentsProperty.arraySize;
             for (int i = 0; i < arraySize; i++)
             {
                 SerializedProperty element = _componentsProperty.GetArrayElementAtIndex(i);
-                _editors.Add(Editor.CreateEditor(element.objectReferenceValue));
+                _editors.Add(UnityEditor.Editor.CreateEditor(element.objectReferenceValue));
             }
             
             SetupReorderableList(collectionName);
@@ -303,7 +332,8 @@ namespace KINEMATION.ScriptableWidget
 
             EditorGUILayout.Space();
             
-            if (GUILayout.Button($"Add {_friendlyComponentName}", EditorStyles.miniButton))
+            var rect = GUILayoutUtility.GetRect(GUIContent.none, EditorStyles.miniButton); 
+            if (GUI.Button(rect, $"Add {_friendlyComponentName}", EditorStyles.miniButton))
             {
                 int count = _componentTypes.Length;
                 
@@ -312,9 +342,12 @@ namespace KINEMATION.ScriptableWidget
                 {
                     menuOptions[i] = new GUIContent(_componentTypes[i].Name);
                 }
-                
-                EditorUtility.DisplayCustomMenu(new Rect(Event.current.mousePosition, Vector2.zero), 
-                    menuOptions, -1, OnTypeSelected, null);
+
+                _dropdownState = null;
+                var dropdown = new ScriptableComponentDropdown(_dropdownState, _typeOptions);
+                dropdown.onTypeSelected = OnTypeSelected;
+                dropdown.Show(rect);
+                dropdown.SetWindowSize(new Vector2(0f, 200f));
             }
 
             if (_useStandaloneWindow || _editorIndex < 0 || _editors.Count == 0)

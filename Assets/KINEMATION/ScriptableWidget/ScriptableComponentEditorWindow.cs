@@ -1,14 +1,15 @@
-﻿// Designed by KINEMATION, 2024.
+﻿// Copyright (c) 2026 KINEMATION.
+// All rights reserved.
 
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace KINEMATION.ScriptableWidget
+namespace KINEMATION.Shared.ScriptableWidget.Editor
 {
     public class ScriptableComponentEditorWindow : EditorWindow
     {
-        private Editor _targetEditor;
+        private UnityEditor.Editor _targetEditor;
         private Vector2 _scrollPosition;
 
         public static ScriptableComponentEditorWindow CreateWindow()
@@ -17,12 +18,12 @@ namespace KINEMATION.ScriptableWidget
             return newWindow;
         }
 
-        public Editor GetEditor()
+        public UnityEditor.Editor GetEditor()
         {
             return _targetEditor;
         }
 
-        public void RefreshEditor(Editor newEditor, string windowTitle)
+        public void RefreshEditor(UnityEditor.Editor newEditor, string windowTitle)
         {
             titleContent.text = windowTitle;
             _targetEditor = newEditor;
