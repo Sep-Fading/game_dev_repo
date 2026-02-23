@@ -1,9 +1,8 @@
-﻿// Copyright (c) 2026 KINEMATION.
-// All rights reserved.
+// Designed by KINEMATION, 2025.
 
 using System;
 using System.Collections.Generic;
-using KINEMATION.Shared.KAnimationCore.Runtime.Core;
+using KINEMATION.KAnimationCore.Runtime.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -62,24 +61,18 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
             autoLocCurve = new VectorCurve(keyFrame);
         }
     }
-    
+
     [HelpURL("https://kinemation.gitbook.io/scriptable-animation-system/recoil-system/recoil-animation")]
-    [AddComponentMenu("KINEMATION/Recoil Animation")]
     public class RecoilAnimation : MonoBehaviour
     {
-        public RecoilAnimData recoilData;
-        public bool isAiming;
-        public FireMode fireMode;
-
-        public KTransform RecoilTransform => new KTransform(OutLoc, OutRot);
-        
         public Quaternion OutRot { get; private set; }
         public Vector3 OutLoc { get; private set; }
-        
-        // This property exists for compatibility reasons only.
-        public RecoilAnimData RecoilData => recoilData;
-        
+
+        public bool isAiming;
+
+        public RecoilAnimData RecoilData { get; private set; }
         private float _fireRate;
+        public FireMode fireMode;
         private List<AnimState> _stateMachine;
         private int _stateIndex;
 
@@ -120,70 +113,12 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
         
         private Vector2 _pitchProgress;
         private Vector2 _upProgress;
-        
-        // Controller recoil.
-        private Vector2 _deltaInput;
-        private Vector2 _compensation;
-        private Vector2 _targetRecoil;
-        private Vector2 _recoil;
-        private Vector2 _cachedRecoil;
-        private Vector2 _recoilDelta;
-        private bool _isFiring;
-        
-        public Vector2 GetRecoilDelta()
-        {
-            return _recoilDelta;
-        }
-
-        public void UpdateDeltaInput(Vector2 deltaInput)
-        {
-            if (recoilData == null) return;
-            _deltaInput = deltaInput;
-        }
-        
-        private float Compensate(float recoil, float compensation)
-        {
-            float multiplier = 1f;
-            bool isOpposite = recoil * compensation <= 0f;
-	
-            if(!Mathf.Approximately(compensation, 0f) && isOpposite)
-            {
-                multiplier -= Mathf.Clamp01(Mathf.Abs(compensation / recoil));
-            }
-            
-            return multiplier;
-        }
-        
-        private void UpdateControllerRecoil()
-        {
-            if (_isFiring)
-            {
-                // Accumulate player delta input when firing.
-                _compensation.x += _deltaInput.x;
-                _compensation.y += _deltaInput.y;
-            }
-            
-            float alpha = KMath.ExpDecayAlpha(recoilData.horizontalSmoothing, Time.deltaTime);
-            _recoil.x = Mathf.Lerp(_recoil.x, _targetRecoil.x, alpha);
-            
-            alpha = KMath.ExpDecayAlpha(recoilData.verticalSmoothing, Time.deltaTime);
-            _recoil.y = Mathf.Lerp(_recoil.y, _targetRecoil.y, alpha);
-
-            if (!_isFiring)
-            {
-                alpha = KMath.ExpDecayAlpha(recoilData.damping, Time.deltaTime);
-                _targetRecoil = Vector2.Lerp(_targetRecoil, Vector2.zero, alpha);
-            }
-            
-            _recoilDelta = _recoil - _cachedRecoil;
-            _cachedRecoil = _recoil;
-        }
     
         public void Init(RecoilAnimData data, float fireRate, FireMode newFireMode)
         {
             fireMode = newFireMode;
             
-            recoilData = data;
+            RecoilData = data;
 
             OutRot = Quaternion.identity;
             OutLoc = Vector3.zero;
@@ -200,21 +135,13 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
             _pushTarget = 0f;
             _noiseTarget = Vector2.zero;
-            
-            _compensation = _recoilDelta = _targetRecoil = _cachedRecoil = _recoil = Vector2.zero;
 
             SetupStateMachine();
         }
 
         public void Play()
         {
-            if (recoilData == null) return;
-            
-            if (!_isFiring) _compensation = _recoilDelta = Vector2.zero;
-            
-            _isFiring = true;
-            _targetRecoil.x += Random.Range(recoilData.horizontalRecoil.x, recoilData.horizontalRecoil.y);
-            _targetRecoil.y += Random.Range(recoilData.verticalRecoil.x, recoilData.verticalRecoil.y);
+            if (RecoilData == null) return;
             
             //Iterate through each transition, if true execute
             for (int i = 0; i < _stateMachine.Count; i++)
@@ -232,30 +159,15 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
         public void Stop()
         {
-            if (recoilData == null) return;
-            
-            _isFiring = false;
-            
-            _recoil.x *= Compensate(_recoil.x, _compensation.x);
-            _recoil.y *= Compensate(_recoil.y, _compensation.y);
-            _cachedRecoil = _recoil;
-            _targetRecoil = _recoil;
+            if (RecoilData == null) return;
 
             _stateMachine[_stateIndex].onStop.Invoke();
             _isLooping = false;
         }
 
-        private void Start()
-        {
-            OutRot = Quaternion.identity;
-            OutLoc = Vector3.zero;
-        }
-
         private void Update()
         {
-            if (recoilData == null) return;
-
-            UpdateControllerRecoil();
+            if (RecoilData == null) return;
             
             if (_isPlaying)
             {
@@ -272,7 +184,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
             
             Quaternion finalRot = Quaternion.Euler(finalEulerRot);
 
-            Vector3 pivotOffset = isAiming ? recoilData.aimPivotOffset : recoilData.hipPivotOffset;
+            Vector3 pivotOffset = isAiming ? RecoilData.aimPivotOffset : RecoilData.hipPivotOffset;
             finalLoc += finalRot * pivotOffset - pivotOffset;
             
             ApplySway(ref finalLoc, ref finalRot);
@@ -283,47 +195,47 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
         private void CalculateTargetData()
         {
-            float pitch = Random.Range(recoilData.pitch.x, recoilData.pitch.y);
-            float yawMin = Random.Range(recoilData.yaw.x, recoilData.yaw.y);
-            float yawMax = Random.Range(recoilData.yaw.z, recoilData.yaw.w);
+            float pitch = Random.Range(RecoilData.pitch.x, RecoilData.pitch.y);
+            float yawMin = Random.Range(RecoilData.yaw.x, RecoilData.yaw.y);
+            float yawMax = Random.Range(RecoilData.yaw.z, RecoilData.yaw.w);
 
             float yaw = Random.value >= 0.5f ? yawMax : yawMin;
 
-            float rollMin = Random.Range(recoilData.roll.x, recoilData.roll.y);
-            float rollMax = Random.Range(recoilData.roll.z, recoilData.roll.w);
+            float rollMin = Random.Range(RecoilData.roll.x, RecoilData.roll.y);
+            float rollMax = Random.Range(RecoilData.roll.z, RecoilData.roll.w);
 
             float roll = Random.value >= 0.5f ? rollMax : rollMin;
 
-            roll = _targetRot.z * roll > 0f && recoilData.smoothRoll ? -roll : roll;
+            roll = _targetRot.z * roll > 0f && RecoilData.smoothRoll ? -roll : roll;
 
-            float kick = Random.Range(recoilData.kickback.x, recoilData.kickback.y);
-            float kickRight = Random.Range(recoilData.kickRight.x, recoilData.kickRight.y);
-            float kickUp = Random.Range(recoilData.kickUp.x, recoilData.kickUp.y);
+            float kick = Random.Range(RecoilData.kickback.x, RecoilData.kickback.y);
+            float kickRight = Random.Range(RecoilData.kickRight.x, RecoilData.kickRight.y);
+            float kickUp = Random.Range(RecoilData.kickUp.x, RecoilData.kickUp.y);
 
-            _noiseTarget.x += Random.Range(recoilData.noiseX.x, recoilData.noiseX.y);
-            _noiseTarget.y += Random.Range(recoilData.noiseY.x, recoilData.noiseY.y);
+            _noiseTarget.x += Random.Range(RecoilData.noiseX.x, RecoilData.noiseX.y);
+            _noiseTarget.y += Random.Range(RecoilData.noiseY.x, RecoilData.noiseY.y);
 
-            _noiseTarget.x *= isAiming ? recoilData.noiseScalar : 1f;
-            _noiseTarget.y *= isAiming ? recoilData.noiseScalar : 1f;
+            _noiseTarget.x *= isAiming ? RecoilData.noiseScalar : 1f;
+            _noiseTarget.y *= isAiming ? RecoilData.noiseScalar : 1f;
 
-            pitch *= isAiming ? recoilData.aimRot.x : 1f;
-            yaw *= isAiming ? recoilData.aimRot.y : 1f;
-            roll *= isAiming ? recoilData.aimRot.z : 1f;
+            pitch *= isAiming ? RecoilData.aimRot.x : 1f;
+            yaw *= isAiming ? RecoilData.aimRot.y : 1f;
+            roll *= isAiming ? RecoilData.aimRot.z : 1f;
 
-            kick *= isAiming ? recoilData.aimLoc.z : 1f;
-            kickRight *= isAiming ? recoilData.aimLoc.x : 1f;
-            kickUp *= isAiming ? recoilData.aimLoc.y : 1f;
+            kick *= isAiming ? RecoilData.aimLoc.z : 1f;
+            kickRight *= isAiming ? RecoilData.aimLoc.x : 1f;
+            kickUp *= isAiming ? RecoilData.aimLoc.y : 1f;
 
             _targetRot = new Vector3(pitch, yaw, roll);
             _targetLoc = new Vector3(kickRight, kickUp, kick);
             
             // Compute target progression.
-            float adsScalar = isAiming ? recoilData.adsProgressAlpha : 1f;
-            _pitchProgress.y += recoilData.pitchProgress.amount * adsScalar;
-            _upProgress.y += recoilData.upProgress.amount * adsScalar;
+            float adsScalar = isAiming ? RecoilData.adsProgressAlpha : 1f;
+            _pitchProgress.y += RecoilData.pitchProgress.amount * adsScalar;
+            _upProgress.y += RecoilData.upProgress.amount * adsScalar;
             
             // Compute target recoil sway.
-            var recoilSway = recoilData.recoilSway;
+            var recoilSway = RecoilData.recoilSway;
 
             float value = Random.Range(recoilSway.pitchSway.x, recoilSway.pitchSway.y);
             if (isAiming) value *= recoilSway.adsScale;
@@ -336,7 +248,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
         private void UpdateTimeline()
         {
-            _playBack += Time.deltaTime * recoilData.playRate;
+            _playBack += Time.deltaTime * RecoilData.playRate;
             _playBack = Mathf.Clamp(_playBack, 0f, _lastFrameTime);
 
             // Stop updating if the end is reached
@@ -363,7 +275,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
             }
         
             // Current playback position
-            float lastPlayback = _playBack - Time.deltaTime * recoilData.playRate;
+            float lastPlayback = _playBack - Time.deltaTime * RecoilData.playRate;
             lastPlayback = Mathf.Max(lastPlayback, 0f);
 
             Vector3 alpha = _tempRotCurve.GetValue(_playBack);
@@ -410,7 +322,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
             {
                 Vector3 lerped = _smoothRotOut;
 
-                Vector3 smooth = recoilData.smoothRot;
+                Vector3 smooth = RecoilData.smoothRot;
 
                 Func<float, float, float, float, float> Interp = (a, b, speed, scale) =>
                 {
@@ -420,17 +332,17 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
                         : Mathf.Lerp(a, b * scale, KMath.ExpDecayAlpha(speed, Time.deltaTime));
                 };
 
-                lerped.x = Interp(_smoothRotOut.x, _rawRotOut.x, smooth.x, recoilData.extraRot.x);
-                lerped.y = Interp(_smoothRotOut.y, _rawRotOut.y, smooth.y, recoilData.extraRot.y);
-                lerped.z = Interp(_smoothRotOut.z, _rawRotOut.z, smooth.z, recoilData.extraRot.z);
+                lerped.x = Interp(_smoothRotOut.x, _rawRotOut.x, smooth.x, RecoilData.extraRot.x);
+                lerped.y = Interp(_smoothRotOut.y, _rawRotOut.y, smooth.y, RecoilData.extraRot.y);
+                lerped.z = Interp(_smoothRotOut.z, _rawRotOut.z, smooth.z, RecoilData.extraRot.z);
                 _smoothRotOut = lerped;
 
                 lerped = _smoothLocOut;
-                smooth = recoilData.smoothLoc;
+                smooth = RecoilData.smoothLoc;
                 
-                lerped.x = Interp(_smoothLocOut.x, _rawLocOut.x, smooth.x, recoilData.extraLoc.x);
-                lerped.y = Interp(_smoothLocOut.y, _rawLocOut.y, smooth.y, recoilData.extraLoc.y);
-                lerped.z = Interp(_smoothLocOut.z, _rawLocOut.z, smooth.z, recoilData.extraLoc.z);
+                lerped.x = Interp(_smoothLocOut.x, _rawLocOut.x, smooth.x, RecoilData.extraLoc.x);
+                lerped.y = Interp(_smoothLocOut.y, _rawLocOut.y, smooth.y, RecoilData.extraLoc.y);
+                lerped.z = Interp(_smoothLocOut.z, _rawLocOut.z, smooth.z, RecoilData.extraLoc.z);
 
                 _smoothLocOut = lerped;
             }
@@ -443,14 +355,14 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
         private void ApplyNoise(ref Vector3 finalized)
         {
-            _noiseTarget.x = Mathf.Lerp(_noiseTarget.x, 0f, KMath.ExpDecayAlpha(recoilData.noiseDamp.x, Time.deltaTime));
-            _noiseTarget.y = Mathf.Lerp(_noiseTarget.y, 0f, KMath.ExpDecayAlpha(recoilData.noiseDamp.y, Time.deltaTime));
+            _noiseTarget.x = Mathf.Lerp(_noiseTarget.x, 0f, KMath.ExpDecayAlpha(RecoilData.noiseDamp.x, Time.deltaTime));
+            _noiseTarget.y = Mathf.Lerp(_noiseTarget.y, 0f, KMath.ExpDecayAlpha(RecoilData.noiseDamp.y, Time.deltaTime));
 	
             _noiseOut.x = Mathf.Lerp(_noiseOut.x, _noiseTarget.x, 
-                KMath.ExpDecayAlpha(recoilData.noiseAccel.x, Time.deltaTime));
+                KMath.ExpDecayAlpha(RecoilData.noiseAccel.x, Time.deltaTime));
 
             _noiseOut.y = Mathf.Lerp(_noiseOut.y, _noiseTarget.y, 
-                KMath.ExpDecayAlpha(recoilData.noiseAccel.y, Time.deltaTime));
+                KMath.ExpDecayAlpha(RecoilData.noiseAccel.y, Time.deltaTime));
             
             finalized += new Vector3(_noiseOut.x, _noiseOut.y, 0f);
         }
@@ -458,26 +370,26 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
         private void ApplyPushback(ref Vector3 finalized)
         {
             _pushTarget = Mathf.Lerp(_pushTarget, 0f, 
-                KMath.ExpDecayAlpha(recoilData.pushDamp, Time.deltaTime));
+                KMath.ExpDecayAlpha(RecoilData.pushDamp, Time.deltaTime));
             
             _pushOut = Mathf.Lerp(_pushOut, _pushTarget, 
-                KMath.ExpDecayAlpha(recoilData.pushAccel, Time.deltaTime));
+                KMath.ExpDecayAlpha(RecoilData.pushAccel, Time.deltaTime));
 
             finalized += new Vector3(0f, 0f, _pushOut);
         }
 
         private void ApplyProgression(ref Vector3 translation, ref Vector3 rotation)
         {
-            float alpha = KMath.ExpDecayAlpha(recoilData.pitchProgress.acceleration, Time.deltaTime);
+            float alpha = KMath.ExpDecayAlpha(RecoilData.pitchProgress.acceleration, Time.deltaTime);
             _pitchProgress.x = Mathf.Lerp(_pitchProgress.x, _pitchProgress.y, alpha);
             
-            alpha = KMath.ExpDecayAlpha(recoilData.upProgress.acceleration, Time.deltaTime);
+            alpha = KMath.ExpDecayAlpha(RecoilData.upProgress.acceleration, Time.deltaTime);
             _upProgress.x = Mathf.Lerp(_upProgress.x, _upProgress.y, alpha);
             
-            alpha = KMath.ExpDecayAlpha(recoilData.pitchProgress.damping, Time.deltaTime);
+            alpha = KMath.ExpDecayAlpha(RecoilData.pitchProgress.damping, Time.deltaTime);
             _pitchProgress.y = Mathf.Lerp(_pitchProgress.y, 0f, alpha);
             
-            alpha = KMath.ExpDecayAlpha(recoilData.upProgress.damping, Time.deltaTime);
+            alpha = KMath.ExpDecayAlpha(RecoilData.upProgress.damping, Time.deltaTime);
             _upProgress.y = Mathf.Lerp(_upProgress.y, 0f, alpha);
 
             translation.y += _upProgress.x;
@@ -486,17 +398,17 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
         private void ApplySway(ref Vector3 translation, ref Quaternion rotation)
         {
-            float alpha = KMath.ExpDecayAlpha(recoilData.recoilSway.acceleration, Time.deltaTime);
+            float alpha = KMath.ExpDecayAlpha(RecoilData.recoilSway.acceleration, Time.deltaTime);
             _pitchSway.x = Mathf.Lerp(_pitchSway.x, _pitchSway.y, alpha);
             _yawSway.x = Mathf.Lerp(_yawSway.x, _yawSway.y, alpha);
             
-            alpha = KMath.ExpDecayAlpha(recoilData.recoilSway.damping, Time.deltaTime);
+            alpha = KMath.ExpDecayAlpha(RecoilData.recoilSway.damping, Time.deltaTime);
             _pitchSway.y = Mathf.Lerp(_pitchSway.y, 0f, alpha);
             _yawSway.y = Mathf.Lerp(_yawSway.y, 0f, alpha);
 
             Quaternion swayRotation = Quaternion.Euler(new Vector3(_pitchSway.x, _yawSway.x,
-                _yawSway.x * recoilData.recoilSway.rollMultiplier));
-            Vector3 swayPosition = swayRotation * recoilData.recoilSway.pivotOffset - recoilData.recoilSway.pivotOffset;
+                _yawSway.x * RecoilData.recoilSway.rollMultiplier));
+            Vector3 swayPosition = swayRotation * RecoilData.recoilSway.pivotOffset - RecoilData.recoilSway.pivotOffset;
 
             rotation *= swayRotation;
             translation += swayPosition;
@@ -537,8 +449,8 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
 
             semiState.onPlay = () =>
             {
-                SetupTransition(_smoothRotOut, _smoothLocOut, recoilData.recoilCurves.semiRotCurve, 
-                    recoilData.recoilCurves.semiLocCurve);
+                SetupTransition(_smoothRotOut, _smoothLocOut, RecoilData.recoilCurves.semiRotCurve, 
+                    RecoilData.recoilCurves.semiLocCurve);
             };
 
             semiState.onStop = () =>
@@ -555,7 +467,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
                     return;
                 }
             
-                var curves = recoilData.recoilCurves;
+                var curves = RecoilData.recoilCurves;
                 bool bCurvesValid = curves.autoRotCurve.IsValid() && curves.autoLocCurve.IsValid();
 
                 _enableSmoothing = bCurvesValid;
@@ -572,7 +484,7 @@ namespace KINEMATION.ProceduralRecoilAnimationSystem.Runtime
                     SetupTransition(_startValRot, _startValLoc, curves.semiRotCurve, curves.semiLocCurve);
                 }
 
-                _pushTarget = recoilData.pushAmount;
+                _pushTarget = RecoilData.pushAmount;
             
                 _lastFrameTime = correction;
                 _isLooping = true;

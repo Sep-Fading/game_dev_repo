@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5145ec35ffe07d947aab2a3be0c0cb9e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Animations/C_Rifle_GrenadeThrow.anim
+  uploadId: 860208

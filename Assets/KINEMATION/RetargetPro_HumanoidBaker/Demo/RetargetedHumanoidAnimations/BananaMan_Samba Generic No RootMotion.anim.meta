@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d5a73ee31aded6e49898f2612bee6de1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/RetargetedHumanoidAnimations/BananaMan_Samba
+    Generic No RootMotion.anim
+  uploadId: 860208

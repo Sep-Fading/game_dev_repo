@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f651c2892b0a9fb4196d81ced6df3d77
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Animations/Samba.controller
+  uploadId: 860208

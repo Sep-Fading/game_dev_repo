@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fef737ecab7b74b4da419b414eeb4b29
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Rigs/Rig_IKRig_TFP.asset
+  uploadId: 860208

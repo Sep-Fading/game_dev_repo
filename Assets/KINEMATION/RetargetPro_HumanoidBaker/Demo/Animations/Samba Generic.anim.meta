@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 624d0451410d40b47970d6238dbecbab
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Animations/Samba Generic.anim
+  uploadId: 860208

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cf14cd2c28c85364b9f97e3ebf08074a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Prefabs/Characters/BananaMan.prefab
+  uploadId: 860208

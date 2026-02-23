@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2813296975767226702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2189989540619019824, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Armature'\n\tTransform 'Armature'\n\tTransform
+        'Armature'\n\tFrom animation clip 'BananaMan_Piano_Generic'\n\tFrom animation
+        clip 'BananaMan_C_Rifle_GrenadeThrow'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619079347786062974, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 7f2b7eb9f9632d045b08f8f90cbc45c3, type: 2}
+    - target: {fileID: 3614102946519665040, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 7400000, guid: cca6a92c2d38fac4bb64fe8830bf61e0, type: 2}
+    - target: {fileID: 3914727737953980183, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061024504644084690, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_text
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750772, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750779, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_Name
+      value: GrenadeExample Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194407927204750779, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458356717383357254, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 7400000, guid: fd3d084a33ce61b42ac221ddd4929bb5, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: feec8d1b5dc16d24dbf6569aa84bd142, type: 3}

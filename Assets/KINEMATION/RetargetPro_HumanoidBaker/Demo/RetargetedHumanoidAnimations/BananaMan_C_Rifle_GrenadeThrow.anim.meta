@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cca6a92c2d38fac4bb64fe8830bf61e0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/RetargetedHumanoidAnimations/BananaMan_C_Rifle_GrenadeThrow.anim
+  uploadId: 860208

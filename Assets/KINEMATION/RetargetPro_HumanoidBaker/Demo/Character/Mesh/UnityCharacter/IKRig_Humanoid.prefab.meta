@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 138afe8a9bd39f842b74af66bf21648c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Character/Mesh/UnityCharacter/IKRig_Humanoid.prefab
+  uploadId: 860208

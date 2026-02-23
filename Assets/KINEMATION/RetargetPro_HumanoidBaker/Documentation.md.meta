@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 820857b058bab78439665ee22a20b234
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Documentation.md
+  uploadId: 860208

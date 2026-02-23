@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bde48e0912bbe34458901e2e3be99dc7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Prefabs/Level Geometry.prefab
+  uploadId: 860208

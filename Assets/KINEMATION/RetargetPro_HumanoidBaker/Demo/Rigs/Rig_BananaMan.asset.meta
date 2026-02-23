@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6d81026634fe47244b8dc19cdeed26fc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Rigs/Rig_BananaMan.asset
+  uploadId: 860208

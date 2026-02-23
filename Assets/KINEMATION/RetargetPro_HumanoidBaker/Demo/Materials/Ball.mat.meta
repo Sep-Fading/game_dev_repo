@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f441f0ec4d95dd643aa278ae484aa48e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Materials/Ball.mat
+  uploadId: 860208

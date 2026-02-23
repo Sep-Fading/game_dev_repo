@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c5892857b62b00549a1897103fd9a940
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Character/Mesh/BananaMan/Banana
+    Generic.prefab
+  uploadId: 860208

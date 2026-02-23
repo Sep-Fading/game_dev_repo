@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cfdaeeaea5c3b9f4981e58c1720cef88
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317248
+  packageName: Retarget Pro - Humanoid Baker
+  packageVersion: 1.0.7
+  assetPath: Assets/RetargetPro_HumanoidBaker/Demo/Prefabs/Characters/IKRig_TFP.prefab
+  uploadId: 860208
