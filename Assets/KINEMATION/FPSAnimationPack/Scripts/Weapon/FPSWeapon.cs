@@ -171,14 +171,15 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Weapon
 
         private void OnFire()
         {
+            
             if (!_isFiring || _isReloading) return;
-
+            
             if (_activeAmmo == 0)
             {
                 OnFireReleased();
                 return;
             }
-            
+            Debug.Log("ggson");
             recoilAnimation.Play();
             if (weaponSound != null) weaponSound.PlayFireSound();
             if (cameraAnimator != null) cameraAnimator.PlayCameraShake(weaponSettings.cameraShake);

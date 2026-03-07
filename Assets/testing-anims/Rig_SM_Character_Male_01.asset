@@ -336,16 +336,6 @@ MonoBehaviour:
     - name: Character_Hair_Male_01
       index: 41
       isVirtual: 0
-  - chainName: Eyebrows
-    elementChain:
-    - name: Eyebrows
-      index: 42
-      isVirtual: 0
-  - chainName: Eyes
-    elementChain:
-    - name: Eyes
-      index: 43
-      isVirtual: 0
   - chainName: UpperLeg_L
     elementChain:
     - name: UpperLeg_L

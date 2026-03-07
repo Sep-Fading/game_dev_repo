@@ -11,6 +11,8 @@ using Demo.Scripts.Runtime.AttachmentSystem;
 
 using System.Collections.Generic;
 using Demo.Scripts.Runtime.Character;
+using KINEMATION.FPSAnimationPack.Scripts.Sounds;
+using KINEMATION.FPSAnimationPack.Scripts.Weapon;
 using UnityEngine;
 
 namespace Demo.Scripts.Runtime.Item
@@ -21,6 +23,7 @@ namespace Demo.Scripts.Runtime.Item
         [SerializeField] [Range(0f, 120f)] private float fieldOfView = 90f;
         
         [SerializeField] private FPSAnimationAsset reloadClip;
+        [SerializeField] private FPSAnimationAsset reloadClipEmpty;
         [SerializeField] private FPSCameraAnimation cameraReloadAnimation;
         
         [SerializeField] private FPSAnimationAsset grenadeClip;
@@ -216,27 +219,50 @@ namespace Demo.Scripts.Runtime.Item
         
         public override bool OnReload()
         {
-            if (!FPSAnimationAsset.IsValid(reloadClip))
+            if (false)
             {
-                return false;
-            }
+                if (!FPSAnimationAsset.IsValid(reloadClipEmpty))
+                {
+                    return false;
+                }
+                _playablesController.PlayAnimation(reloadClipEmpty, 0f);
             
-            _playablesController.PlayAnimation(reloadClip, 0f);
-            
-            if (_weaponAnimator != null)
-            {
-                _weaponAnimator.Rebind();
-                _weaponAnimator.Play("Reload_Tac", 0);
-                _playablesController.PlayAnimation(reloadClip);
-            }
+                if (_weaponAnimator != null)
+                {
+                    _weaponAnimator.Rebind();
+                    _weaponAnimator.Play("Reload_Empty", 0);
+                    _playablesController.PlayAnimation(reloadClipEmpty);
+                }
 
-            if (_fpsCameraController != null)
-            {
-                _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
-            }
+                if (_fpsCameraController != null)
+                {
+                    _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
+                }
             
-            Invoke(nameof(OnActionEnded), reloadClip.clip.length * 0.85f);
+                Invoke(nameof(OnActionEnded), reloadClipEmpty.clip.length * 0.85f);
+            }
+            else
+            {
+                if (!FPSAnimationAsset.IsValid(reloadClip))
+                {
+                    return false;
+                }
+                _playablesController.PlayAnimation(reloadClip, 0f);
+            
+                if (_weaponAnimator != null)
+                {
+                    _weaponAnimator.Rebind();
+                    _weaponAnimator.Play("Reload_Tac", 0);
+                    _playablesController.PlayAnimation(reloadClip);
+                }
 
+                if (_fpsCameraController != null)
+                {
+                    _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
+                }
+            
+                Invoke(nameof(OnActionEnded), reloadClip.clip.length * 0.85f);
+            }
             OnFireReleased();
             return true;
         }
@@ -267,6 +293,8 @@ namespace Demo.Scripts.Runtime.Item
             }
             
             _fpsCameraController.PlayCameraShake(cameraShake);
+            GetComponentInChildren<FPSWeaponSound>().PlayFireSound();
+            
             
             if(fireClip != null) _playablesController.PlayAnimation(fireClip);
 

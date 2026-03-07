@@ -18,7 +18,7 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Sounds
         }
 
         public void PlayFireSound()
-        {
+        { 
             if (_audioSource == null)
             {
                 Debug.LogWarning($"Failed to play weapon sound: invalid Audio Source!");

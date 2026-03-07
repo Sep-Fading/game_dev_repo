@@ -332,7 +332,19 @@ MonoBehaviour:
   targetRig: {fileID: 11400000, guid: fb02669b14ed77c4f9880847092f51ee, type: 2}
   excludeChain:
     chainName: Elements To Exclude
-    elementChain: []
+    elementChain:
+    - name: Character_Hair_Female_01
+      index: 40
+      isVirtual: 0
+    - name: Character_Hair_Male_01
+      index: 41
+      isVirtual: 0
+    - name: Eyebrows
+      index: 42
+      isVirtual: 0
+    - name: Eyes
+      index: 43
+      isVirtual: 0
   retargetFeatures:
   - {fileID: 9000459518052707407}
   - {fileID: -3289690808433829066}
