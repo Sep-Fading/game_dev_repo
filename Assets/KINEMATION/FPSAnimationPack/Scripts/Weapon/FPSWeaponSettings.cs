@@ -39,5 +39,6 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Weapon
         public Vector2 firePitchRange = Vector2.one;
         public Vector2 fireVolumeRange = Vector2.one;
         public List<AudioClip> weaponEventSounds;
+        public AudioClip fireModeSound;
     }
 }

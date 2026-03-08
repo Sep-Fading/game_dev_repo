@@ -76,6 +76,8 @@ MonoBehaviour:
   recoilPatternSettings: {fileID: 0}
   cameraShake: {fileID: 0}
   fireRate: 750
+  magCount: 3
+  magSize: 30
   supportsAuto: 1
   supportsBurst: 1
   burstLength: 3

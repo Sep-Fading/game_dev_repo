@@ -34,8 +34,12 @@ namespace Demo.Scripts.Runtime.Item
         [SerializeField] private RecoilAnimData recoilData;
         [SerializeField] private RecoilPatternSettings recoilPatternSettings;
         [SerializeField] private FPSCameraShake cameraShake;
+        
+        [Header("Firing")]
         [Min(0f)] [SerializeField] private float fireRate;
-
+        [Min(1f)] [SerializeField] private int magCount; //amount of mags the gun comes with 
+        [Min(1f)] [SerializeField] private int magSize; //(MAY NEED TO CHANGE THIS LATER TO BE DEPENDENT ON THE PLAYER AND NOT THE WEAPON)
+        private int currentAmmo = 30;
         [SerializeField] private bool supportsAuto;
         [SerializeField] private bool supportsBurst;
         [SerializeField] private int burstLength;
@@ -187,18 +191,21 @@ namespace Demo.Scripts.Runtime.Item
 
         public override bool OnFirePressed()
         {
-            // Do not allow firing faster than the allowed fire rate.
-            if (Time.unscaledTime - _lastRecoilTime < 60f / fireRate)
+            if (currentAmmo > 0)
             {
-                return false;
+                OnFire();
+                // Do not allow firing faster than the allowed fire rate.
+                if (Time.unscaledTime - _lastRecoilTime < 60f / fireRate)
+                {
+                    return false;
+                }
+            
+                _lastRecoilTime = Time.unscaledTime;
+                _bursts = burstLength;
+            
+                return true;
             }
-            
-            _lastRecoilTime = Time.unscaledTime;
-            _bursts = burstLength;
-            
-            OnFire();
-            
-            return true;
+            return false;
         }
 
         public override bool OnFireReleased()
@@ -219,52 +226,59 @@ namespace Demo.Scripts.Runtime.Item
         
         public override bool OnReload()
         {
-            if (false)
+            if (magCount > 0)
             {
-                if (!FPSAnimationAsset.IsValid(reloadClipEmpty))
+                if (currentAmmo == 0)
                 {
-                    return false;
-                }
-                _playablesController.PlayAnimation(reloadClipEmpty, 0f);
+                    if (!FPSAnimationAsset.IsValid(reloadClipEmpty))
+                    {
+                        return false;
+                    }
+                    _playablesController.PlayAnimation(reloadClipEmpty, 0f);
             
-                if (_weaponAnimator != null)
-                {
-                    _weaponAnimator.Rebind();
-                    _weaponAnimator.Play("Reload_Empty", 0);
-                    _playablesController.PlayAnimation(reloadClipEmpty);
-                }
+                    if (_weaponAnimator != null)
+                    {
+                        _weaponAnimator.Rebind();
+                        _weaponAnimator.Play("Reload_Empty", 0);
+                        _playablesController.PlayAnimation(reloadClipEmpty);
+                    }
 
-                if (_fpsCameraController != null)
-                {
-                    _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
-                }
+                    if (_fpsCameraController != null)
+                    {
+                        _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
+                    }
             
-                Invoke(nameof(OnActionEnded), reloadClipEmpty.clip.length * 0.85f);
-            }
-            else
-            {
-                if (!FPSAnimationAsset.IsValid(reloadClip))
-                {
-                    return false;
+                    Invoke(nameof(OnActionEnded), reloadClipEmpty.clip.length * 0.85f);
                 }
-                _playablesController.PlayAnimation(reloadClip, 0f);
+                else
+                {
+                    if (!FPSAnimationAsset.IsValid(reloadClip))
+                    {
+                        return false;
+                    }
+                    _playablesController.PlayAnimation(reloadClip, 0f);
             
-                if (_weaponAnimator != null)
-                {
-                    _weaponAnimator.Rebind();
-                    _weaponAnimator.Play("Reload_Tac", 0);
-                    _playablesController.PlayAnimation(reloadClip);
-                }
+                    if (_weaponAnimator != null)
+                    {
+                        _weaponAnimator.Rebind();
+                        _weaponAnimator.Play("Reload_Tac", 0);
+                        _playablesController.PlayAnimation(reloadClip);
+                    }
 
-                if (_fpsCameraController != null)
-                {
-                    _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
-                }
+                    if (_fpsCameraController != null)
+                    {
+                        _fpsCameraController.PlayCameraAnimation(cameraReloadAnimation);
+                    }
             
-                Invoke(nameof(OnActionEnded), reloadClip.clip.length * 0.85f);
+                    Invoke(nameof(OnActionEnded), reloadClip.clip.length * 0.85f);
+                }
+                OnFireReleased();
+                currentAmmo = magSize;
+                magCount --;
+                return true;
             }
-            OnFireReleased();
-            return true;
+
+            return false;
         }
 
         public override bool OnGrenadeThrow()
@@ -287,45 +301,50 @@ namespace Demo.Scripts.Runtime.Item
         
         private void OnFire()
         {
-            if (_weaponAnimator != null)
+            Debug.Log(currentAmmo);
+            if(currentAmmo > 0)
             {
-                _weaponAnimator.Play("Fire", 0, 0f);
-            }
-            
-            _fpsCameraController.PlayCameraShake(cameraShake);
-            GetComponentInChildren<FPSWeaponSound>().PlayFireSound();
-            
-            
-            if(fireClip != null) _playablesController.PlayAnimation(fireClip);
-
-            if (_recoilAnimation != null && recoilData != null)
-            {
-                _recoilAnimation.Play();
-            }
-
-            if (_recoilPattern != null)
-            {
-                _recoilPattern.OnFireStart();
-            }
-
-            if (_recoilAnimation.fireMode == FireMode.Semi)
-            {
-                Invoke(nameof(OnFireReleased), 60f / fireRate);
-                return;
-            }
-            
-            if (_recoilAnimation.fireMode == FireMode.Burst)
-            {
-                _bursts--;
-                
-                if (_bursts == 0)
+                currentAmmo--;
+                if (_weaponAnimator != null)
                 {
-                    OnFireReleased();
+                    _weaponAnimator.Play("Fire", 0, 0f);
+                }
+            
+                _fpsCameraController.PlayCameraShake(cameraShake);
+                GetComponentInChildren<FPSWeaponSound>().PlayFireSound();
+            
+            
+                if(fireClip != null) _playablesController.PlayAnimation(fireClip);
+
+                if (_recoilAnimation != null && recoilData != null)
+                {
+                    _recoilAnimation.Play();
+                }
+
+                if (_recoilPattern != null)
+                {
+                    _recoilPattern.OnFireStart();
+                }
+
+                if (_recoilAnimation.fireMode == FireMode.Semi)
+                {
+                    Invoke(nameof(OnFireReleased), 60f / fireRate);
                     return;
                 }
-            }
             
-            Invoke(nameof(OnFire), 60f / fireRate);
+                if (_recoilAnimation.fireMode == FireMode.Burst)
+                {
+                    _bursts--;
+                
+                    if (_bursts == 0)
+                    {
+                        OnFireReleased();
+                        return;
+                    }
+                }
+            
+                Invoke(nameof(OnFire), 60f / fireRate);
+            }
         }
 
         public override void OnCycleScope()
@@ -360,6 +379,7 @@ namespace Demo.Scripts.Runtime.Item
         public override void OnChangeFireMode()
         {
             CycleFireMode();
+            GetComponentInChildren<FPSWeaponSound>().PlayFireModeSound();
             _recoilAnimation.fireMode = _fireMode;
         }
 
@@ -380,6 +400,15 @@ namespace Demo.Scripts.Runtime.Item
             if (scopeGroups.Count == 0) return;
             scopeGroups[_scopeIndex].CycleAttachments(_fpsAnimator);
             UpdateAimPoint();
+        }
+
+        public void AddMagazineCount(int n)
+        {
+            magCount += n;
+        }
+        public int GetMagazineCount()
+        {
+            return magCount;
         }
     }
 }

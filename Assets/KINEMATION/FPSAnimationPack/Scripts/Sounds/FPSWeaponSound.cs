@@ -46,5 +46,12 @@ namespace KINEMATION.FPSAnimationPack.Scripts.Sounds
             
             _audioSource.PlayOneShot(_settings.weaponEventSounds[clipIndex]);
         }
+
+        public void PlayFireModeSound()
+        {
+            _audioSource.pitch = Random.Range(_settings.firePitchRange.x, _settings.firePitchRange.y);
+            _audioSource.volume = Random.Range(_settings.fireVolumeRange.x, _settings.fireVolumeRange.y);
+            _audioSource.PlayOneShot(_settings.fireModeSound);
+        }
     }
 }
